@@ -1,0 +1,115 @@
+@media (max-width: 1152px) {
+
+}
+
+@media (max-width: 991px) {
+
+	.menu ul {
+		float: right;
+		position: absolute;
+		right: 100px;
+	}
+
+	.menu-vertical > ul > li > a {
+		color: #ffffff;
+	}
+
+	.logo {
+		background-image: url(../img/logo-yellow.png);
+		/*background-image: url(../img/logo-color.png);*/
+		background-size: 93.5px 107.95px;
+		background-repeat: no-repeat;
+		height: 109.95px;
+		width: 98.5px;
+		margin-left: 5%;
+		/*position: fixed;*/
+	}
+
+	.subscribe {
+		position: relative;
+		float: left;
+		margin: 20px;
+	}
+
+	.contact-us {
+		position: relative;
+		float: left;
+		margin: 20px;
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	.navbar-flat {
+		width: 100%;
+		height: 110px;
+		background: #221F20;
+		z-index: 2000;
+		position: absolute;
+		-webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+	}
+
+	.menubar {
+		width: 100%;
+		min-width: 176px;
+	}
+
+	.carousel-up {
+		padding-top: 110px;
+	}
+
+	.menu-active {
+		height: 400px;
+	}
+
+	.dropdown-menu {
+		left: 15px;
+	}
+
+	#toggle-button {
+		float: right;
+		right: 40px;
+		margin-top: -10px;
+		position: absolute;
+	}
+
+	.logo {
+		/*background-image: url(../img/logo-color.png);*/
+		background-image: url(../img/logo-yellow.png);
+		background-size: 73px 84px;
+		background-repeat: no-repeat;
+		height: 90px;
+		width: 78px;
+		left: 25px;
+		margin-top: 12px;
+		position: absolute;
+	}
+
+	.menu-vertical ul {
+		padding-top: 130px;
+		list-style: none;
+	}
+
+	.menu-vertical > ul > li {
+		padding:13px 0px 13px 20px;
+		margin:0;
+	}
+
+	.menu-vertical > ul > li > a {
+		color: #ffffff;
+	}
+
+	.prevbut {
+		height: 500px;
+		margin-top: 110px;
+	}
+
+	.nextbut {
+		height: 500px;
+		margin-top: 110px;
+	}
+
+}

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Books_C extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,9 +17,21 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('db_query');
+		$this->load->model('books_model');
+	}
+
 	public function index() {
 		$this->load->view('templates/header');
-		$this->load->view('home');
+		$data = array(
+				'books' => $this->db_query->get_books_db(),
+				'new' => $this->books_model->get_books_type(1),
+				'recommended' => $this->books_model->get_books_type(2),
+				'normal' => $this->books_model->get_books_type(3)
+				);
+		$this->load->view('books_v', $data);
 		$this->load->view('templates/footer');
 	}
 }

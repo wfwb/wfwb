@@ -8,7 +8,7 @@
 	<title>สำนักพิมพ์ คำต่อคำ</title>
 
 	<link media="screen" href="<?php base_url()?>assets/css/bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="<?php base_url()?>assets/css/bootstrap-glyphicons.css">
+	<!-- <link rel="stylesheet" type="text/css" href="<?php base_url()?>assets/css/bootstrap-glyphicons.css"> -->
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php base_url()?>assets/css/wfwb.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php base_url()?>assets/css/wfwb-responsive.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -110,7 +110,7 @@
 
 	<div class="navbar-flat">
 		<div class="menubar">
-			<div class="menu visible-lg">
+			<div class="menu visible-lg visible-md">
 				<ul>
 					<li class="dropdown" id="search-li">
 						<a id="search" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-search"></span>&nbsp&nbspค้นหา</a>
@@ -145,7 +145,14 @@
 				</ul>
 			</div>
 
-			<div class="menu visible-md">
+			<button type="button" class="navbar-toggle visible-sm visible-xs" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<div class="menu visible-sm">
 				<ul>
 					<li class="dropdown">
 						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-search"></span>&nbsp&nbspค้นหา</a>
@@ -172,12 +179,6 @@
 					</li>
 				</ul>	
 			</div>
-
-			<button class="hidden-lg navbar-toggle" type="button" id="toggle-button">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>	
-			</button>
 			
 			<div class="logo">
 			</div>
@@ -190,7 +191,7 @@
 					<li><a id="webboard-li-ver" href="">พบปะพูดคุย</a></li>
 					<li><a id="joinus-li-ver" href="#">ร่วมงานกับเรา</a></li>
 					<li><a id="joinus-li-ver" href="#">ติดต่อเรา</a></li>
-					<li class="dropdown visible-sm" id="login-li-ver">
+					<li class="dropdown visible-xs" id="login-li-ver">
 						<a href="#" data-toggle="dropdown">เข้าสู่ระบบ</a>
 						<ul class="dropdown-menu" id="login">
 							<h3 style="text-align: center; margin-top: -110px;">กรุณาเข้าสู่ระบบ</h3>
@@ -203,7 +204,7 @@
 							</form>
 						</ul>
 					</li>
-					<li class="dropdown visible-sm" id="search-li-ver">
+					<li class="dropdown visible-xs" id="search-li-ver">
 						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-search"></span>&nbsp&nbspค้นหา</a>
 						<ul class="dropdown-menu" id="login">
 							<h4 style="text-align: center; letter-spacing: 0; margin-top: -110px;">ค้นหาหนังสือหรือนักเขียน</h4>

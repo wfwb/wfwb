@@ -1,4 +1,39 @@
-@media (max-width: 1152px) {
+@media (min-width: 992px) {
+
+	.menubar {
+		min-width: 992px;
+	}
+
+}
+
+@media (min-width: 768px) {
+
+	.navbar-toggle {
+		position: relative;
+		right: 50px;
+		margin-top: 50px;
+		margin-right: -22%;
+	}
+
+	.menu-vertical {
+		margin-top: 35px;
+		margin-left: -20%;
+	}
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+	.logo {
+		background-image: url(../img/logo-yellow.png);
+		/*background-image: url(../img/logo-color.png);*/
+		background-size: 93.5px 107.95px;
+		background-repeat: no-repeat;
+		height: 109.95px;
+		width: 98.5px;
+		margin-left: -15%;
+		/*position: fixed;*/
+	}
 
 }
 
@@ -12,17 +47,6 @@
 
 	.menu-vertical > ul > li > a {
 		color: #ffffff;
-	}
-
-	.logo {
-		background-image: url(../img/logo-yellow.png);
-		/*background-image: url(../img/logo-color.png);*/
-		background-size: 93.5px 107.95px;
-		background-repeat: no-repeat;
-		height: 109.95px;
-		width: 98.5px;
-		margin-left: 5%;
-		/*position: fixed;*/
 	}
 
 	.subscribe {
@@ -40,6 +64,13 @@
 }
 
 @media (max-width: 767px) {
+
+	.navbar-toggle {
+		position: relative;
+		right: 50px;
+		margin-top: 37px;
+		margin-right: -10px;
+	}
 
 	.navbar-flat {
 		width: 100%;
@@ -83,9 +114,14 @@
 		background-repeat: no-repeat;
 		height: 90px;
 		width: 78px;
-		left: 25px;
+		left: 40px;
 		margin-top: 12px;
 		position: absolute;
+	}
+
+	.menu-vertical {
+		/*margin-top: 30px;*/
+		margin-left: -15px;
 	}
 
 	.menu-vertical ul {

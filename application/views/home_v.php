@@ -23,10 +23,10 @@
 	</div>
 
 	<a class="prevbut left carousel-control" href="#carousel-banner" data-slide="prev">
-		<span class="icon-prev"></span>
+		<span class="glyphicon glyphicon-chevron-left"></span>
 		</a>
 	<a class="nextbut right carousel-control" href="#carousel-banner" data-slide="next">
-		<span class="icon-next"></span>
+		<span class="glyphicon glyphicon-chevron-right"></span>
 	</a>
 </div>	
 

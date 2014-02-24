@@ -45,6 +45,7 @@ $route['books'] = 'books_c';
 $route['join_us'] = 'join_us_c';
 $route['contact_us'] = 'contact_us_c';
 $route['how_to'] = 'contact_us_c/how_to';
+$route['register'] = 'home_c/register';
 
 $route['admin'] = "admin_c";
 $route['admin_home_page'] = "admin_c/home_page";

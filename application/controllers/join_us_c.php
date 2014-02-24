@@ -21,25 +21,27 @@ class Join_Us_C extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('db_query');
-		$this->load->model('join_us_model');
+		$this->load->model('join_us_m');
 	}
 
 	public function index() {
 
 		$this->load->view('templates/header');
+		$data['join_us'] = $this->db_query->get_join_us_db();
+		$this->load->view('join_us_v', $data);
 		$this->load->view('templates/footer');
 
 	}
 
 	public function show_join_us() {
 
-		if (!$this->ion_auth->logged_in()) {
-			$this->load->view('templates/header');
-		}
+		// if (!$this->ion_auth->logged_in()) {
+		// 	$this->load->view('templates/header');
+		// }
 		
-		else {
-			$this->load->view('templates/header_logged_in');
-		}
+		// else {
+		// 	$this->load->view('templates/header_logged_in');
+		// }
 
 		$data['join_us'] = $this->join_us_model->find_join_us();
 

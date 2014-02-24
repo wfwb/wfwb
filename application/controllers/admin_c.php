@@ -96,7 +96,23 @@ class Admin_C extends CI_Controller {
 	}
 
 	public function books_page_add() {
-		$this->books_m->add_book();
+
+		$path = './public/img/books';
+		// add to config
+		$config['upload_path'] = $path;
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['max_size']	= '10000';
+
+		$this->load->library('upload', $config);
+
+		$this->upload->do_upload('cover_img_front');
+		$this->upload->do_upload('cover_img_back');
+		$data['cover_img_front'] = $path."/".$_FILES['cover_img_front']['name'];
+		$data['cover_img_back'] = $path."/".$_FILES['cover_img_back']['name'];
+
+
+
+		$this->books_m->add_book($data);
 		redirect('/admin_books_page', 'refresh');
 	}
 

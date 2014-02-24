@@ -22,6 +22,14 @@ class Home_C extends CI_Controller {
 		$this->load->view('home_v');
 		$this->load->view('templates/footer');
 	}
+
+	public function register() {
+
+		$this->load->view('templates/header');
+		$this->load->view('register_v');
+		$this->load->view('templates/footer');
+
+	}
 }
 
 /* End of file welcome.php */

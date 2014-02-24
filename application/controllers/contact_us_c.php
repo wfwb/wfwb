@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Books_C extends CI_Controller {
+class Contact_Us_C extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,22 +17,37 @@ class Books_C extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function __construct() {
-		parent::__construct();
-		$this->load->model('db_query');
-		$this->load->model('books_m');
-	}
 
 	public function index() {
+		
+		// if (!$this->ion_auth->logged_in()) {
+		// 	$this->load->view('templates/header');
+		// }
+
+		// else {
+		// 	$this->load->view('templates/header_logged_in');
+		// }
+
 		$this->load->view('templates/header');
-		$data = array(
-				'books' => $this->db_query->get_books_db(),
-				'new' => $this->books_m->get_books_type(1),
-				'recommended' => $this->books_m->get_books_type(2),
-				'normal' => $this->books_m->get_books_type(3)
-				);
-		$this->load->view('books_v', $data);
+		$this->load->view('contact_us_v');
 		$this->load->view('templates/footer');
+
+	}
+
+	public function how_to() {
+
+		// if (!$this->ion_auth->logged_in()) {
+		// 	$this->load->view('templates/header');
+		// }
+
+		// else {
+		// 	$this->load->view('templates/header_logged_in');
+		// }
+		
+		$this->load->view('templates/header');
+		$this->load->view('how_to_v');
+		$this->load->view('templates/footer');
+
 	}
 }
 

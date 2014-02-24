@@ -42,6 +42,16 @@ $route['default_controller'] = 'home_c';
 $route['404_override'] = '';
 
 $route['books'] = 'books_c';
+$route['join_us'] = 'join_us_c';
+$route['contact_us'] = 'contact_us_c';
+$route['how_to'] = 'contact_us_c/how_to';
+
+$route['admin'] = "admin_c";
+$route['admin_home_page'] = "admin_c/home_page";
+$route['admin_books_page'] = "admin_c/books_page";
+$route['admin_news_page'] = "admin_c/news_page";
+$route['admin_join_us_page'] = "admin_c/join_us_page";
+$route['admin_logout'] = "auth/admin_logout";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

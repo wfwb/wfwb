@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Books_model extends CI_Model {
+class Books_m extends CI_Model {
 
 	public function add_book() {
 

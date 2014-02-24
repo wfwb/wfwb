@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Books_C extends CI_Controller {
+class Join_Us_C extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,23 +17,39 @@ class Books_C extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('db_query');
-		$this->load->model('books_m');
+		$this->load->model('join_us_m');
 	}
 
 	public function index() {
+
 		$this->load->view('templates/header');
-		$data = array(
-				'books' => $this->db_query->get_books_db(),
-				'new' => $this->books_m->get_books_type(1),
-				'recommended' => $this->books_m->get_books_type(2),
-				'normal' => $this->books_m->get_books_type(3)
-				);
-		$this->load->view('books_v', $data);
+		$data['join_us'] = $this->db_query->get_join_us_db();
+		$this->load->view('join_us_v', $data);
 		$this->load->view('templates/footer');
+
 	}
+
+	public function show_join_us() {
+
+		// if (!$this->ion_auth->logged_in()) {
+		// 	$this->load->view('templates/header');
+		// }
+		
+		// else {
+		// 	$this->load->view('templates/header_logged_in');
+		// }
+
+		$data['join_us'] = $this->join_us_model->find_join_us();
+
+		$this->load->view('new', $data);
+		$this->load->view('templates/footer');
+
+	}
+
 }
 
 /* End of file welcome.php */

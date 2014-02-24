@@ -1,8 +1,8 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Books_model extends CI_Model {
+class Books_m extends CI_Model {
 
-	public function add_book() {
+	public function add_book($data) {
 
 		$data = array(
 			'book_name' => $this->input->post('book_name'),
@@ -21,8 +21,9 @@ class Books_model extends CI_Model {
 			'series_info' => $this->input->post('series_info'),
 			'about_author' => $this->input->post('about_author'),
 			'review' => $this->input->post('review'),
-			'cover_img_front' => $this->input->post('cover_img_front'),
-			'cover_img_back' => $this->input->post('cover_img_back')
+			'cover_img_front' => $data['cover_img_front'],
+			'cover_img_back' => $data['cover_img_back']
+
 		);
 
 		return $this->db->insert('books', $data);

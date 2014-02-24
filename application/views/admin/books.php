@@ -8,7 +8,7 @@
 	<div class="section-inner">
 		<h2>Add new book</h2>
 		<div class="container">
-			<?php echo form_open("admin/books_page_add"); ?>
+			<?php echo form_open("admin_c/books_page_add"); ?>
 				<ul>
 					<li>book name<input name="book_name" type="text"></input></li>	
 					<li>book name decor<input name="book_name_decor" type="text"></input></li>	
@@ -26,8 +26,8 @@
 					<li>series_info<input name="series_info" type="text"></input></li>
 					<li>about_author<input name="about_author" type="text"></input></li>
 					<li>review<input name="review" type="text"></input></li>
-					<li>cover_img_front<input name="cover_img_front" type="text"></input></li>
-					<li>cover_img_back<input name="cover_img_back" type="text"></input></li>
+					<li>cover_img_front<input name="cover_img_front" type="file"></input></li>  
+					<li>cover_img_back<input name="cover_img_back" type="file"></input></li> 
 					<button type="submit" class="btn btn-primary">Add</button>
 				</ul>
 			<?php echo form_close(); ?>

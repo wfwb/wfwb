@@ -25,6 +25,7 @@ class Admin_C extends CI_Controller {
 		$this->load->model('join_us_m');
 		$this->load->model('news_m');
 		$this->load->model('books_m');
+
 	}
 
 	public function index() {
@@ -96,7 +97,7 @@ class Admin_C extends CI_Controller {
 	}
 
 	public function books_page_add() {
-
+		// $this->load->helper(array('form', 'url'));
 		$path = './public/img/books';
 		// add to config
 		$config['upload_path'] = $path;
@@ -105,6 +106,9 @@ class Admin_C extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
+		// if($this->upload->do_upload('cover_img_front'))
+		// 	echo "yess";
+		// else echo "no";
 		$this->upload->do_upload('cover_img_front');
 		$this->upload->do_upload('cover_img_back');
 		$data['cover_img_front'] = $path."/".$_FILES['cover_img_front']['name'];
@@ -122,6 +126,13 @@ class Admin_C extends CI_Controller {
 	}
 
 	public function books_page_delete() {
+		// get file path
+		$paths = $this->books_m->get_book_file();
+		// $this->load->helper("file");
+		foreach ($paths['0'] as $path) {
+			unlink($path);
+		}
+
 		$this->books_m->delete_book();
 		redirect('/admin_books_page', 'refresh');
 	}

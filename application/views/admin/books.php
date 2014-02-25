@@ -8,7 +8,7 @@
 	<div class="section-inner">
 		<h2>Add new book</h2>
 		<div class="container">
-			<?php echo form_open("admin_c/books_page_add"); ?>
+			<?php echo form_open_multipart("admin_c/books_page_add"); ?>
 				<ul>
 					<li>book name<input name="book_name" type="text"></input></li>	
 					<li>book name decor<input name="book_name_decor" type="text"></input></li>	
@@ -41,7 +41,7 @@
 			<?php
 				foreach ($books as $book) { 
 			?>
-				<?php echo form_open('admin/books_page_edit'); ?>
+				<?php echo form_open('admin_c/books_page_edit'); ?>
 				<ul>
 					<li style="display: none;"><input name="id" value="<?php echo $book['id']; ?>"></input></li>
 					<li>book name<input name="book_name" type="text" value="<?php echo $book['book_name']; ?>"></input></li>
@@ -66,7 +66,7 @@
 				</ul>
 				<button type="submit" class="btn btn-primary">Save</button>
 				<?php echo form_close(); ?>
-				<?php echo form_open('admin/books_page_delete'); ?>
+				<?php echo form_open('admin_c/books_page_delete'); ?>
 					<li style="display: none;"><input name="id" value="<?php echo $book['id']; ?>"></input></li>
 					<button type="submit" class="btn btn-danger">Remove</button>	
 				<?php echo form_close(); ?>

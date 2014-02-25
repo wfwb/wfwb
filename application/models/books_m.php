@@ -60,6 +60,12 @@ class Books_m extends CI_Model {
 		return $this->db->query($str);
 	}
 
+	public function get_book_file() {
+		$this->db->select('cover_img_front, cover_img_back');
+		$query = $this->db->get_where('books', array('id' => $this->input->post('id')));
+		return $query->result_array();
+	}
+
 	public function delete_book() {
 
 		$query = "DELETE FROM books WHERE id=".$this->input->post('id');

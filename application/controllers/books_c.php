@@ -34,6 +34,18 @@ class Books_C extends CI_Controller {
 		$this->load->view('books_v', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function books2() {
+		$this->load->view('templates/header');
+		$data = array(
+				'books' => $this->db_query->get_books_db(),
+				'new' => $this->books_m->get_books_type(1),
+				'recommended' => $this->books_m->get_books_type(2),
+				'normal' => $this->books_m->get_books_type(3)
+				);
+		$this->load->view('books2_v', $data);
+		$this->load->view('templates/footer');
+	}
 }
 
 /* End of file welcome.php */

@@ -21,7 +21,8 @@
 					<li>total_pages<input name="total_pages" type="text"></input></li>
 					<li>price<input name="price" type="text"></input></li>
 					<li>discount<input name="discount" type="text"></input></li>
-					<li>demo_link<input name="demo_link" type="text"></input></li>
+					<!-- <li>demo_link<input name="demo_link" type="text"></input></li> -->
+					<li>demo_link<input name="demo_link" type="file"></input></li>
 					<li>book_info<input name="book_info" type="text"></input></li>
 					<li>series_info<input name="series_info" type="text"></input></li>
 					<li>about_author<input name="about_author" type="text"></input></li>

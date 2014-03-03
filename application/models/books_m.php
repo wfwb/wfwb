@@ -16,7 +16,7 @@ class Books_m extends CI_Model {
 			'total_pages' => $this->input->post('total_pages'),
 			'price' => $this->input->post('price'),
 			'discount' => $this->input->post('discount'),
-			'demo_link' => $this->input->post('demo_link'),
+			'demo_link' => $data['demo_link'],
 			'book_info' => $this->input->post('book_info'),
 			'series_info' => $this->input->post('series_info'),
 			'about_author' => $this->input->post('about_author'),
@@ -61,7 +61,7 @@ class Books_m extends CI_Model {
 	}
 
 	public function get_book_file() {
-		$this->db->select('cover_img_front, cover_img_back');
+		$this->db->select('cover_img_front, cover_img_back, demo_link');
 		$query = $this->db->get_where('books', array('id' => $this->input->post('id')));
 		return $query->result_array();
 	}

@@ -102,19 +102,24 @@ class Admin_C extends CI_Controller {
 		// add to config
 		$config['upload_path'] = $path;
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
-		$config['max_size']	= '10000';
-
-		$this->load->library('upload', $config);
-
-		// if($this->upload->do_upload('cover_img_front'))
-		// 	echo "yess";
-		// else echo "no";
+		$config['max_size']	= '0';
+		$this->upload->initialize($config);
+		// $this->load->library('upload', $config);
+		// upload image
 		$this->upload->do_upload('cover_img_front');
 		$this->upload->do_upload('cover_img_back');
 		$data['cover_img_front'] = $path."/".$_FILES['cover_img_front']['name'];
 		$data['cover_img_back'] = $path."/".$_FILES['cover_img_back']['name'];
 
-
+		// upload pdf
+		$path2 = './public/pdf';
+		$config2['upload_path'] = $path2;
+		$config2['allowed_types'] = 'pdf';
+		$config2['max_size']	= '0';
+		// $this->load->library('upload', $config2);
+		$this->upload->initialize($config2);
+		$this->upload->do_upload('demo_link');
+		$data['demo_link'] = $path2."/".$_FILES['demo_link']['name'];
 
 		$this->books_m->add_book($data);
 		redirect('/admin_books_page', 'refresh');

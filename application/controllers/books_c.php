@@ -20,18 +20,30 @@ class Books_C extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('db_query');
-		$this->load->model('books_model');
+		$this->load->model('books_m');
 	}
 
 	public function index() {
 		$this->load->view('templates/header');
 		$data = array(
 				'books' => $this->db_query->get_books_db(),
-				'new' => $this->books_model->get_books_type(1),
-				'recommended' => $this->books_model->get_books_type(2),
-				'normal' => $this->books_model->get_books_type(3)
+				'new' => $this->books_m->get_books_type(1),
+				'recommended' => $this->books_m->get_books_type(2),
+				'normal' => $this->books_m->get_books_type(3)
 				);
 		$this->load->view('books_v', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function books2() {
+		$this->load->view('templates/header');
+		$data = array(
+				'books' => $this->db_query->get_books_db(),
+				'new' => $this->books_m->get_books_type(1),
+				'recommended' => $this->books_m->get_books_type(2),
+				'normal' => $this->books_m->get_books_type(3)
+				);
+		$this->load->view('books2_v', $data);
 		$this->load->view('templates/footer');
 	}
 }

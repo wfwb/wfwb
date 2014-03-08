@@ -12,9 +12,9 @@
 		background: #FFFFFF;
 		z-index: 2000;
 		position: fixed;
-		-webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-		-moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+		/*-webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
+		/*-moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
+		/*box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
 	}
 
 	#ul-custom {
@@ -41,9 +41,9 @@
 		/*background: #FFFFFF;*/
 		z-index: 2000;
 		/*position: fixed;*/
-		-webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-		-moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+		/*-webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
+		/*-moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
+		/*box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);*/
 		border-bottom: 4px solid #F2CD34;
 	}
 
@@ -134,7 +134,7 @@
 		height: 109.95px;
 		width: 97.5px;
 		margin-top: 10px;
-		margin-left: 2%;
+		margin-left: 0%;
 	  	display: inline-block;
 	  	/*border: 2px solid #f2cd34;*/
 	  	/*border-radius: 15px;*/
@@ -192,7 +192,7 @@
 		margin-right: auto;
 	}
 
-	.section-inner h1 {
+	/*.section-inner h1 {
 		text-align: center;
 		padding-top: 30px;
 	}
@@ -201,7 +201,7 @@
 		text-align: center;
 		font-size: 18px;
 		padding-top: 30px;
-	}
+	}*/
 
 /*
 	Footer
@@ -272,6 +272,22 @@
 		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 	}
 
+	.btn-warning:hover,
+	.btn-warning:focus,
+	.btn-warning:active,
+	.btn-warning.active,
+	.btn-warning.disabled,
+	.btn-warning[disabled] {
+		color: #ffffff;
+		background-color: #f89406;
+		*background-color: #df8505;
+	}
+
+	.btn-warning:active,
+	.btn-warning.active {
+		background-color: #c67605 \9;
+	}
+
 	.btn-default {
 		color: #ffffff;
 		text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -287,6 +303,22 @@
 		border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
 		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	}
+
+	.btn-default:hover,
+	.btn-default:focus,
+	.btn-default:active,
+	.btn-default.active,
+	.btn-default.disabled,
+	.btn-default[disabled] {
+		color: #ffffff;
+		background-color: #222222;
+		*background-color: #151515;
+	}
+
+	.btn-default:active,
+	.btn-default.active {
+		background-color: #080808 \9;
 	}
 
 /*

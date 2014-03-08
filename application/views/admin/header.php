@@ -7,7 +7,7 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/bootstrap-responsive.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/docs.css">
+	<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/docs.css"> -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/wfwb.css">
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
 
@@ -18,7 +18,30 @@
 
 <body>
 
-	<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">WFWB Administrator System</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="admin_home_page">Home Page</a></li>
+					<li><a href="admin_books_page">Books Page</a></li>
+					<li><a href="admin_news_page">News Page</a></li>
+					<li><a href="admin_join_us_page">Join us Page</a></li>
+					<li><a href="admin_logout">Log out</a></li>
+				</ul>
+			</div><!--/.navbar-collapse -->
+		</div>
+	</div>
+
+	<!-- <div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -38,4 +61,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->

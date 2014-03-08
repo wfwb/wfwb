@@ -142,8 +142,8 @@
 				<!-- <h1 style="color: #ffffff; text-align: center; padding-top: 12px;">หนังสือใหม่</h1> -->
 			<!-- </div> -->
 			<!-- <hr style="border-top: 1px solid #221F20;"> -->
-			<!-- <h1 style="margin-left: 50px;">หนังสือใหม่</h1> -->
-			<!-- <hr style="border-top: 1px solid #f2cd34;"> -->
+			<h1 style="margin-left: 50px;">หนังสือใหม่</h1>
+			<hr style="border-top: 1px solid #f2cd34;">
 			<div class="row" style="margin: 50px 0 20px 0;">
 				<a href="#" style="color: #252120;">
 					<div class="col-md-3" style="text-align: center; line-height: 10px;">

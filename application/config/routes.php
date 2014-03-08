@@ -42,6 +42,7 @@ $route['default_controller'] = 'home_c';
 $route['404_override'] = '';
 
 $route['books'] = 'books_c';
+$route['books2'] = 'books_c/books2';
 $route['join_us'] = 'join_us_c';
 $route['contact_us'] = 'contact_us_c';
 $route['how_to'] = 'contact_us_c/how_to';

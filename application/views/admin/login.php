@@ -6,7 +6,7 @@
 	<title>WFWB Admin Panel</title>
 
 	<link rel="stylesheet" type="text/css" href="<?php base_url()?>assets/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<?php base_url()?>assets/css/bootstrap-responsive.css">
+	<!-- <link rel="stylesheet" type="text/css" href="<?php base_url()?>assets/css/bootstrap-responsive.css"> -->
 	<meta name="viewport" content="width=deivce-width, initial-scale=1.0">
 
 	<script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-1.7.1.min.js"></script>
@@ -56,8 +56,8 @@
 			echo form_open('auth/admin_login', $attributes);
 		?>
 			<h2 class="form-signin-heading">Please sign in</h2>
-			<input type="text" name="identity" class="input-block-level" placeholder="Email address">
-			<input type="password" name="password" class="input-block-level" placeholder="Password">
+			<input type="text" name="identity" class="form-control" placeholder="Email address">
+			<input type="password" name="password" class="form-control" placeholder="Password">
 			<button class="btn btn-large btn-primary" type="submit">Sign in</button>
 		<?php echo form_close();?>
 	</div>

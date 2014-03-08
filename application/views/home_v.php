@@ -8,15 +8,15 @@
 	</ol>
 
 	<div class="carousel-inner">
-		<div class="item active" style="background-image: url(../wfwbwebsite/assets/img/carousel-books-1.png); background-position: center; height: 500px;">
+		<div class="item active" style="background-image: url(../wfwb/assets/img/carousel-books-1.png); background-position: center; height: 500px;">
 			<!-- <img src="<?php echo base_url()?>assets/img/carousel-waterfall.jpg" style="height: 100%; min-width: 2560px; opacity: 0.5;"> -->
 			<!-- <img src="<?php echo base_url()?>assets/img/carousel-waterfall.jpg"> -->
 		</div>
-		<div class="item" style="background-image: url(../wfwbwebsite/assets/img/carousel-books-2.png); background-position: center; height: 500px;">
+		<div class="item" style="background-image: url(../wfwb/assets/img/carousel-books-2.png); background-position: center; height: 500px;">
 			<!-- <img src="<?php echo base_url()?>assets/img/carousel-tree.jpg"> -->
 			<!-- <img src="<?php echo base_url()?>assets/img/carousel-tree.jpg" style="min-width: 2560px; position: relative"> -->
 		</div>
-		<div class="item" style="background-image: url(../wfwbwebsite/assets/img/carousel-books-3.png); background-position: center; height: 500px;">
+		<div class="item" style="background-image: url(../wfwb/assets/img/carousel-books-3.png); background-position: center; height: 500px;">
 			<!-- <img src="<?php echo base_url()?>assets/img/carousel-waterfall.jpg" style="height: 100%; min-width: 2560px; opacity: 0.5;"> -->
 			<!-- <img src="<?php echo base_url()?>assets/img/carousel-waterfall.jpg"> -->
 		</div>

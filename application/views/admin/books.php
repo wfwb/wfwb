@@ -1,8 +1,88 @@
-<header class="jumbotron subhead" id="overview">
-  <div class="container">
-    <h1>Books Page</h1>
-    <p class="lead">Admin Panel</p>
-</header>
+<div class="jumbotron" style="margin-top: 51px;">
+	<div class="container">
+		<h1>Books Page</h1>
+		<p>Admin Panel</p>
+		<!-- <p><a class="btn btn-primary btn-lg" role="button">Learn more »</a></p> -->
+	</div>
+</div>
+
+<div class="row">
+	<div class="container">
+		<h2>Add New Book</h2>
+		<br>
+		<?php 
+			$attributes = array('class' => 'form-horizontal');
+			echo form_open("admin_c/books_page_add", $attributes); 
+		?>
+			<div class="form-group">
+				<label for="book_name" class="col-sm-2 control-label">Book Name</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="book_name" name="book_name" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="book_name_decor" class="col-sm-2 control-label">คำโปรย</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="book_name_decor" name="book_name_decor" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="series" class="col-sm-2 control-label">Series</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="series" name="series" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="author" class="col-sm-2 control-label">Author</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="author" name="author" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="category" class="col-sm-2 control-label">Category</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="category" name="category" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ISBN" class="col-sm-2 control-label">ISBN</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="ISBN" name="ISBN" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="publish" class="col-sm-2 control-label">Publish Date</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="publish" name="publish" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="cover_inside" class="col-sm-2 control-label">Cover & Inside</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="cover_inside" name="cover_inside" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="total_pages" class="col-sm-2 control-label">Total Pages</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="total_pages" name="total_pages" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="price" class="col-sm-2 control-label">Price</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="price" name="price" type="text"></input>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="discount" class="col-sm-2 control-label">% Discount</label>
+				<div class="col-sm-9">
+					<input class="col-sm-10 form-control" id="discount" name="discount" type="text"></input>
+				</div>
+			</div>
+		<?php echo form_close(); ?>
+	</div>
+</div>
 
 <div class="section">
 	<div class="section-inner">

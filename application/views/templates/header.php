@@ -15,6 +15,8 @@
 
 	<script src="<?php base_url()?>assets/js/jquery-1.7.1.min.js" type="text/javascript"></script>
 	<script src="<?php base_url()?>assets/js/bootstrap.js" type="text/javascript"></script>
+	<script src="<?php base_url()?>assets/js/jquery.bootpag.js" type="text/javascript"></script>
+	<script src="<?php base_url()?>assets/js/jquery.dotdotdot.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
 		!function ($) {
@@ -44,23 +46,23 @@
 
 			});
 
-			$('.menu ul li a').click(function(e) {
-				$('.menu ul li a').removeClass('active');
-				var $this = $(this);
-				if (!$this.hasClass('active')) {
-					$this.addClass('active');
-				}
-				e.preventDefault();
-			});
+			// $('.menu ul li a').click(function(e) {
+			// 	$('.menu ul li a').removeClass('active');
+			// 	var $this = $(this);
+			// 	if (!$this.hasClass('active')) {
+			// 		$this.addClass('active');
+			// 	}
+			// 	e.preventDefault();
+			// });
 
-			$('.menu-vertical ul li a').click(function(e) {
-				$('.menu-vertical ul li a').removeClass('active');
-				var $this = $(this);
-				if (!$this.hasClass('active')) {
-					$this.addClass('active');
-				}
-				e.preventDefault();
-			});
+			// $('.menu-vertical ul li a').click(function(e) {
+			// 	$('.menu-vertical ul li a').removeClass('active');
+			// 	var $this = $(this);
+			// 	if (!$this.hasClass('active')) {
+			// 		$this.addClass('active');
+			// 	}
+			// 	e.preventDefault();
+			// });
 
 			$('.menu-vertical').hide();
 		});
@@ -152,12 +154,12 @@
 						</ul>
 					</li>
 
-					<li><a id="joinus-li" href="#">ติดต่อเรา</a></li>
-					<li><a id="joinus-li" href="#">ร่วมงานกับเรา</a></li>
-					<li><a id="webboard-li" href="#">พบปะพูดคุย</a></li>
-					<li><a id="news-li" href="#">ต่างๆ นานา</a></li>
-					<li><a id="books-li" href="#">ชั้นหนังสือ</a></li>
-					<li><a id="home-li" href="#">หน้าบ้าน</a></li>
+					<li><a id="contactus-li" href="<?php echo base_url()?>contact_us">ติดต่อเรา</a></li>
+					<li><a id="joinus-li" href="<?php echo base_url()?>join_us">ร่วมงานกับเรา</a></li>
+					<li><a id="webboard-li" href="http://forum.wordforwordbooks.com" target="_blank">พบปะพูดคุย</a></li>
+					<li><a id="news-li" href="<?php echo base_url()?>news">ต่างๆ นานา</a></li>
+					<li><a id="books-li" href="<?php echo base_url()?>books">ชั้นหนังสือ</a></li>
+					<li><a id="home-li" href="<?php echo base_url()?>">หน้าบ้าน</a></li>
 				</ul>
 			</div>
 
@@ -217,12 +219,12 @@
 
 			<div class="menu-vertical">
 				<ul>
-					<li><a id="home-li-ver" href="">แรกพบ</a></li>
-					<li><a id="books-li-ver" href="">ชวนอ่านหนังสือ</a></li>
-					<li><a id="news-li-ver" href="">แจ้งข่าว</a></li>
-					<li><a id="webboard-li-ver" href="">พบปะพูดคุย</a></li>
-					<li><a id="joinus-li-ver" href="#">ร่วมงานกับเรา</a></li>
-					<li><a id="joinus-li-ver" href="#">ติดต่อเรา</a></li>
+					<li><a id="home-li-ver" href="<?php echo base_url()?>">แรกพบ</a></li>
+					<li><a id="books-li-ver" href="<?php echo base_url()?>books">ชวนอ่านหนังสือ</a></li>
+					<li><a id="news-li-ver" href="<?php echo base_url()?>news">แจ้งข่าว</a></li>
+					<li><a id="webboard-li-ver" href="http://forum.wordforwordbooks.com" target="_blank">พบปะพูดคุย</a></li>
+					<li><a id="joinus-li-ver" href="<?php echo base_url()?>join_us">ร่วมงานกับเรา</a></li>
+					<li><a id="contactus-li-ver" href="<?php echo base_url()?>contact_us">ติดต่อเรา</a></li>
 					<li class="dropdown visible-xs" id="login-li-ver">
 						<a href="#" data-toggle="dropdown">เข้าสู่ระบบ</a>
 						<ul class="dropdown-menu" id="login">

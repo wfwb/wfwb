@@ -42,10 +42,24 @@
 		</div>
 	</div> -->
 
+	<div class="row" style="height: 100px; background-image: url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;">
+	<!-- <div class="row" style="height: 100px; margin: 0 0 0 0; background-color: #221f20;"> -->
+		<!-- <h1 style="color: #fff; margin: 80px 0 0 130px; font-size: 55px;">หนังสือใหม่</h1> -->
+		<h1 style="color: #fff; margin: 23px 0 0 120px; font-size: 55px;">ติดต่อเรา</h1>
+		<!-- <div class="container">
+		<div class="col-md-6" style="background-image: url(../wfwb/assets/img/new_1.jpg); height: 530px;">
+			<h1 style="color: #ffffff; text-align: center;">หนังสือใหม่</h1>
+		</div>
+		<div class="col-md-6 "style="background-image: url(../wfwb/assets/img/new_2.jpg); background-size: height: 530px;">
+			<h1 style="color: #ffffff; text-align: center;">หนังสือทั้งหมด</h1>
+		</div>
+		</div> -->
+	</div>
+	
 	<div id="contact-us-section" class="section">
 		<div class="section-inner">
-			<h1 style="text-align: left;">ติดต่อเรา</h1>
-			<br>
+			<!-- <h1 style="text-align: left;">ติดต่อเรา</h1>
+			<br> -->
 			<p style="text-align: left; font-size: 16px;">
 				<span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;สำนักพิมพ์คำต่อคำ<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;35/300  หมู่บ้านสีวลี  ซอยสีวลี 5/25<br>

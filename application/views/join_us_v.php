@@ -42,7 +42,7 @@
 		</div>
 	</div>
 	
-	<div class="container" style="margin-top: -20px;">
+	<!-- <div class="container" style="margin-top: -20px;">
 		<hr style="border-top: 1px solid #f2cd34;">
 	</div>
 
@@ -64,7 +64,7 @@
 				$i++;
 			} ?>
 		</div>
-	</div>
+	</div> -->
 
 	
 	<!--<?php 

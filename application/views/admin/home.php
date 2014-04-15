@@ -36,13 +36,13 @@
 			<div class="form-group">
 				<label for="heading" class="col-sm-3 control-label">Heading</label>
 				<div class="col-sm-9">
-					<input class="col-sm-9 form-control" id="heading" name="heading" type="text"></input>
+					<textarea class="col-sm-9 form-control" id="heading" name="heading" type="text"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="detail" class="col-sm-3 control-label">Detail</label>
 				<div class="col-sm-9">
-					<input class="col-sm-9 form-control" id="detail" name="detail" type="text"></input>
+					<textarea class="col-sm-9 form-control" id="detail" name="detail" type="text"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
@@ -93,13 +93,13 @@
 				<div class="form-group">
 					<label for="heading" class="col-sm-3 control-label">Heading</label>
 					<div class="col-sm-9">
-						<input class="col-sm-9 form-control" id="heading" name="heading" type="text" value="<?php echo $h['heading']?>"></input>
+						<textarea class="col-sm-9 form-control" id="heading" name="heading" type="text"><?php echo $h['heading']?></textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="detail" class="col-sm-3 control-label">Detail</label>
 					<div class="col-sm-9">
-						<input class="col-sm-9 form-control" id="detail" name="detail" type="text" value="<?php echo $h['detail']?>"></input>
+						<textarea class="col-sm-9 form-control" id="detail" name="detail" type="text"><?php echo $h['detail']?></textarea>
 					</div>
 				</div>
 				<div class="form-group">
@@ -122,10 +122,11 @@
 					<? } ?>
 					<li><input name="text_mobile" type="checkbox"></input>text mobile</li>
 				</ul> -->
-				<div class="col-sm-12" style="margin-bottom: 20px;">
-					<button type="submit" class="btn btn-primary" style="float: right;">Save</button>
-					<button type="submit" class="btn btn-danger" style="float: right;">Remove</button>
+				<div class="col-xs-12" style="text-align: right;">
+					<button type="submit" class="btn btn-primary">Save</button>
+					<button type="submit" class="btn btn-danger">Remove</button>
 				</div>
+				<br><br><br>
 				<?php echo form_close(); ?>
 			<? } ?>
 		<br>

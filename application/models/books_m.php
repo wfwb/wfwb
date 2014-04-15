@@ -53,11 +53,14 @@ class Books_m extends CI_Model {
 			'cover_img_back' => $this->input->post('cover_img_back')
 		);
 
-		$where = "id = " . $this->input->post('id');
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->update('books', $data);
 
-		$str = $this->db->update_string('books', $data, $where);
+		// $where = "id = " . $this->input->post('id');
 
-		return $this->db->query($str);
+		// $str = $this->db->update_string('books', $data, $where);
+
+		// return $this->db->query($str);
 	}
 
 	public function get_book_file() {

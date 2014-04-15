@@ -98,6 +98,7 @@ class Admin_C extends CI_Controller {
 
 	public function books_page_add() {
 		// $this->load->helper(array('form', 'url'));
+
 		$path = './public/img/books';
 		// add to config
 		$config['upload_path'] = $path;
@@ -108,6 +109,12 @@ class Admin_C extends CI_Controller {
 		// upload image
 		$this->upload->do_upload('cover_img_front');
 		$this->upload->do_upload('cover_img_back');
+
+		$data = array();
+		$data['cover_img_front'] = "";
+		$data['cover_img_back'] = "";
+		$data['demo_link'] = "";
+
 		$data['cover_img_front'] = $path."/".$_FILES['cover_img_front']['name'];
 		$data['cover_img_back'] = $path."/".$_FILES['cover_img_back']['name'];
 
@@ -142,6 +149,8 @@ class Admin_C extends CI_Controller {
 		redirect('/admin_books_page', 'refresh');
 	}
 
+	// NEWS
+
 	public function news_page() {
 
 		if ($this->ion_auth->is_admin()) {
@@ -170,6 +179,8 @@ class Admin_C extends CI_Controller {
 		redirect('/admin_news_page', 'refresh');
 	}
 
+	// JOIN US
+
 	public function join_us_page() {
 
 		if ($this->ion_auth->is_admin()) {
@@ -184,12 +195,39 @@ class Admin_C extends CI_Controller {
 	}
 
 	public function join_us_page_add() {
-		$this->join_us_m->add_join_us();
+
+		// config picture upload
+		$path = './public/img/thumbnails';
+		$config['upload_path'] = $path;
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['max_size']	= '0';
+		$this->upload->initialize($config);
+		$this->upload->do_upload('thumbnail_img');
+		$data['thumbnail_img'] = $path."/".$_FILES['thumbnail_img']['name'];
+
+		$this->join_us_m->add_join_us($data);
 		redirect('/admin_join_us_page', 'refresh');
 	}
 
 	public function join_us_page_edit() {
-		$this->join_us_m->edit_join_us();
+
+		$join_us = $this->join_us_m->find_join_us();
+		$data['thumbnail_img'] = $this->input->post('thumbnail');
+
+		if (!empty($_FILES['thumbnail_img']['name'])) {
+
+			unlink($data['thumbnail_img']);
+
+			$path = './public/img/thumbnails';
+			$config['upload_path'] = $path;
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size']	= '0';
+			$this->upload->initialize($config);
+			$this->upload->do_upload('thumbnail_img');
+			$data['thumbnail_img'] = $path."/".$_FILES['thumbnail_img']['name'];
+		}
+
+		$this->join_us_m->edit_join_us($data);
 		redirect('/admin_join_us_page', 'refresh');
 	}
 
@@ -197,6 +235,7 @@ class Admin_C extends CI_Controller {
 		$this->join_us_m->delete_join_us();
 		redirect('/admin_join_us_page', 'refresh');
 	}
+
 }
 
 /* End of file welcome.php */

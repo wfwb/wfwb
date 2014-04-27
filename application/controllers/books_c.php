@@ -42,7 +42,9 @@ class Books_C extends CI_Controller {
 
 		$data = array(
 			'new_releases' => $this->bookshelves_m->get_new_releases(),
-			'books' => $this->bookshelves_m->get_books()
+			'books' => $this->bookshelves_m->get_books(),
+			'categories' => $this->db_query->get_categories_db(),
+			'authors' => $this->db_query->get_authors_db()
 		);
 
 		$this->load->view('books_v', $data);

@@ -49,7 +49,7 @@ class Bookshelves_M extends CI_Model {
 
 	public function get_new_releases() {
 
-		$query = "SELECT * FROM bookshelves JOIN books ON books.book_id = bookshelves.book_id  JOIN authors ON authors.author_id = books.author_id WHERE type=1 ORDER BY bookshelves.new_release_order DESC";
+		$query = "SELECT * FROM bookshelves JOIN books ON books.book_id = bookshelves.book_id  JOIN authors ON authors.author_id = books.author_id WHERE type=1 ORDER BY bookshelves.book_order DESC";
 		$q = $this->db->query($query);
 		
 		return $q->result_array();
@@ -101,6 +101,26 @@ class Bookshelves_M extends CI_Model {
 	public function get_latest_new_release() {
 
 		$new_releases = $this->get_new_releases();
+
+	}
+
+	public function set_book_order($book_id, $book_order) {
+
+		$query = "SELECT * FROM bookshelves WHERE book_id=".$book_id;
+		$q = $this->db->query($query);
+		$book = $q->row();
+
+		$data = array(
+			'bookshelf_id' => $book->bookshelf_id,
+			'type' => $book->type,
+			'book_order' => $book_order,
+		);
+
+		$where = "book_id = " . $book_id;
+		$q = $this->db->update_string('bookshelves', $data, $where);
+
+		return $this->db->query($q);
+
 
 	}
 

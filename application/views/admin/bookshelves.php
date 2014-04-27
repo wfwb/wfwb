@@ -21,7 +21,7 @@
 						<th>Book ID</th>
 						<th>Book Name</th>
 						<!-- <th>Type</th> -->
-						<th>Order</th>
+						<!-- <th>Order</th> -->
 						<th></th>
 					</tr>
 				</thead>
@@ -31,14 +31,14 @@
 							<td><?php echo $nr['book_id']; ?></td>
 							<td><?php echo $nr['book_name']; ?></td>
 							<!-- <td><?php if ($nr['type'] == 1) { echo 'new release'; } ?></td> -->
-							<td>
+							<!-- <td>
 								<?php echo form_open(); ?>
 									<div class="form-group">
 										<input type="text" class="form-control" name="new_release_order" value="<?php echo $nr['new_release_order']; ?>" style="width: 50px;"></input>
 										<button type="submit" class="btn btn-sm btn-primary">Save</button>
 									</div>
 								<?php echo form_close(); ?>
-							</td>
+							</td> -->
 							<td>
 								<?php echo form_open('admin_c/remove_new_release'); ?>
 									<div style="display: none;"><input name="book_id" value="<?php echo $nr['book_id']; ?>"></input></div>
@@ -97,17 +97,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($bookshelves as $bs) { ?>
+					<?php 
+						$i = 1;
+						foreach ($bookshelves as $bs) { ?>
 						<tr>
 							<td><?php echo $bs['book_id']; ?></td>
 							<td><?php echo $bs['book_name']; ?></td>
 							<!-- <td><?php echo $bs['type']; ?></td> -->
 							<td>
-								<div style="display: none;"><input name="book_id" value="<?php echo $bs['book_id']; ?>"></input></div>
-								<input class="form-control" name="book_order" type="text" value="<?php echo $bs['book_order']; ?>"></input>
+								<div style="display: none;"><input name="book_id_<?php echo $i; ?>" value="<?php echo $bs['book_id']; ?>"></input></div>
+								<input class="form-control" name="book_order_<?php echo $i; ?>" type="text" value="<?php echo $bs['book_order']; ?>"></input>
 							</td>
 						<tr>
-					<? } ?>
+					<?  $i++;
+					} ?>
 				</tbody>
 			</table>
 		</div>

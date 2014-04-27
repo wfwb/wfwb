@@ -342,7 +342,15 @@ class Admin_C extends CI_Controller {
 	}
 
 	public function change_order() {
+
+		for($i = 1; $i <= sizeof($this->bookshelves_m->get_books()); $i++) {
+			$book_id = 'book_id_' . $i;
+			$book_order = 'book_order_' . $i;
+			$this->bookshelves_m->set_book_order($this->input->post($book_id), $this->input->post($book_order));
+		}
 		
+		redirect('/admin_bookshelves_page', 'refresh');
+
 	}
 
 	// categories page

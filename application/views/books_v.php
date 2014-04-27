@@ -77,6 +77,14 @@
 				$.scrollTo('#books-container', 800, {easing:'swing'} );
 			});
 
+			$(function(){
+
+				// Instantiate MixItUp:
+				// $('.mixitup').mixItUp();
+				$('#Container').mixItUp();
+
+			});
+
 		});
 
 		function change_hero(index) {
@@ -155,9 +163,9 @@
 			?>
 
 				<?php if ($id > 1) { ?> 
-					<div id="<?php echo $id;?>" style="display: none;">
+					<div id="new<?php echo $id;?>" style="display: none;">
 				<? } else { ?> 
-					<div id="<?php echo $id;?>">
+					<div id="new<?php echo $id;?>">
 				<? } ?>
 
 					<?php for ($i = 0; $i < 2 && $no_book > 0; $i++) { ?>
@@ -250,9 +258,9 @@
 				}).on("page", function(event, num){
 				    // $("#content").html("Page " + num); // or some ajax content loading...
 				    for (i = 0; i < 10; i++) {
-				    	$("#" + i).hide();
+				    	$("#new" + i).hide();
 				    }
-				   	$("#" + num).show(); 
+				   	$("#new" + num).show(); 
 				    // ... after content load -> change total to 10
 				    $(this).bootpag({total: <?php echo ceil(sizeof($new_releases)/8); ?>, maxVisible: <?php echo ceil(sizeof($new_releases)/8); ?>});
 				 
@@ -338,10 +346,15 @@
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 					หมวดหมู่ <span class="caret"></span>
 				</button>
+				<!-- <span class="btn filter" data&#45;filter=".5">TEST</span> -->
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">โรแมนติกแฟนตาซี</a></li>
-					<li><a href="#">โรแมนติกคอเมดี้</a></li>
-					<li><a href="#">ดราม่า</a></li>
+					<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
+					<? foreach($categories as $category) { ?>
+						<li class="filter" data-filter=".<?php echo $category['category_id']; ?>"><a><?php echo $category['category_name']; ?></a></li>
+					<? } ?>
+					<!-- <li><a href="">โรแมนติกแฟนตาซี</a></li> -->
+					<!-- <li><a href="#">โรแมนติกคอเมดี้</a></li> -->
+					<!-- <li><a href="#">ดราม่า</a></li> -->
 				</ul>
 			</div>
 			<div class="btn-group" style="text-align: left;">
@@ -349,9 +362,12 @@
 					นักเขียน <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">ดวงตะวัน</a></li>
-					<li><a href="#">อรพิม</a></li>
-					<li><a href="#">อรยุทธ์</a></li>
+					<? foreach($authors as $author) { ?>
+						<li class="filter" data-filter=".<?php echo $author['author_id']; ?>"><a><?php echo $author['author_name']; ?></a></li>
+					<? } ?>
+					<!-- <li><a href="#">ดวงตะวัน</a></li> -->
+					<!-- <li><a href="#">อรพิม</a></li> -->
+					<!-- <li><a href="#">อรยุทธ์</a></li> -->
 				</ul>
 			</div>
 			<div class="btn-group" style="text-align: left;">
@@ -374,6 +390,24 @@
 			<!-- <h1 style="text-align: right; margin-right: 50px;">หนังสือทั้งหมด</h1> -->
 			<!-- <hr style="border-top: 1px solid #f2cd34;"> -->
 
+			<!--
+			<?php foreach($books as $book) { ?>
+
+				<div class="col-md-3 mix <?php echo $book['category_ids'];?>" style="display: inline-block;">
+					<a href="#" style="color: #252120;">
+						<div class="col-md-3 mix <?php echo $book['category_ids']; ?>" style="text-align: center; line-height: 10px;">
+							<img src="<?php echo $book['cover_img_front']; ?>" width="200" style="padding: 5px 5px 5px 5px; border: 8px solid #FFEC99; margin: 0 0 10px 0;">
+							<h4 style="font-weight: bold;"><?php echo $book['book_name']; ?></h4>
+							<p style="font-size: 15px; color: #2e8ece;"><?php echo $book['author_name']; ?></p>
+							<p style="color: #7f8c8d;"><?php echo $book['price']; ?> บาท ส่วนลด <?php echo $book['discount']; ?>%</p>
+						</div>
+					</a>
+				</div>
+
+			<? } ?>
+			-->
+
+						<!-- <div class="col&#45;md&#45;3 mix cat&#45;1" style="text&#45;align: center; line&#45;height: 10px;"> -->
 			<?php 
 
 				$no_book = sizeof($books);
@@ -384,19 +418,19 @@
 			?>
 
 				<?php if ($id > 1) { ?> 
-					<div id="<?php echo $id;?>" style="display: none;">
+					<div id="all<?php echo $id;?>" style="display: none;">
 				<? } else { ?> 
-					<div id="<?php echo $id;?>">
+					<div id="all<?php echo $id;?>">
 				<? } ?>
 
 					<?php for ($i = 0; $i < 2 && $no_book > 0; $i++) { ?>
 
-						<div class="row" style="margin: 50px 0 50px 0;">
+						<div class="row mixitup" id="Container" style="margin: 50px 0 50px 0;">
 
-							<?php for ($j = 0; $j < 4 && $no_book > 0; $j++) { ?>
+							<?php for ($j = 0; $j < sizeof($books); $j++) { ?>
 
 								<a href="#" style="color: #252120;">
-									<div class="col-md-3" style="text-align: center; line-height: 10px;">
+									<div class="col-md-3 mix <?php echo $books[$index]['category_ids']; ?>" style="text-align: center; line-height: 10px;">
 										<img src="<?php echo $books[$index]['cover_img_front']; ?>" width="200" style="padding: 5px 5px 5px 5px; border: 8px solid #FFEC99; margin: 0 0 10px 0;">
 										<h4 style="font-weight: bold;"><?php echo $books[$index]['book_name']; ?></h4>
 										<p style="font-size: 15px; color: #2e8ece;"><?php echo $books[$index]['author_name']; ?></p>
@@ -582,21 +616,20 @@
 			</div>
 			<? } ?>
 		-->
-			<div id="all-selection" style="text-align: center; margin-bottom: 30px;"></div>
-					<script>
-						// init bootpag
-						$('#all-selection').bootpag({
-						    total: <?php echo ceil(sizeof($books)/8); ?>
-						}).on("page", function(event, num){
-						    // $("#content").html("Page " + num); // or some ajax content loading...
-						    for (i = 0; i < 10; i++) {
-						    	$("#" + i).hide();
-						    }
-						   	$("#" + num).show(); 
-						    // ... after content load -> change total to 10
-						    $(this).bootpag({total: <?php echo ceil(sizeof($books)/8); ?>, maxVisible: <?php echo ceil(sizeof($books)/8); ?>});
-						 
-						});
-					</script>
+			<!-- <div id="all&#45;selection" style="text&#45;align: center; margin&#45;bottom: 30px;"></div> -->
+			<script>
+				// init bootpag
+				$('#all-selection').bootpag({
+				    total: <?php echo ceil(sizeof($books)/8); ?>
+					}).on("page", function(event, num){
+				    // $("#content").html("Page " + num); // or some ajax content loading...
+				    for (i = 0; i < 10; i++) {
+				    	$("#all" + i).hide();
+				    }
+				   	$("#all" + num).show(); 
+				    // ... after content load -> change total to 10
+				    $(this).bootpag({total: <?php echo ceil(sizeof($books)/8); ?>, maxVisible: <?php echo ceil(sizeof($books)/8); ?>});
+				});
+			</script>
 		</div>
 	</div>

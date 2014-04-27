@@ -29,19 +29,36 @@
 			<div class="form-group">
 				<label for="series" class="col-sm-2 control-label">Series</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="series" name="series" type="text"></input>
+					<select class="form-control" name="series_id">
+						<option>series</option>
+						<?php foreach($series as $s) { ?>
+							<option value="<?php echo $s['series_id'];?>"><?php echo $s['series_name'];?></option>
+						<? } ?>
+					</select>
+					<!-- <input class="form-control" id="series" name="series" type="text"></input> -->
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="author" class="col-sm-2 control-label">Author</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="author" name="author" type="text"></input>
+					<select class="form-control" name="author_id">
+						<option>author</option>
+						<?php foreach($authors as $author) { ?>
+							<option value="<?php echo $author['author_id'];?>"><?php echo $author['author_name'];?></option>
+						<? } ?>
+					</select>
+					<!-- <input class="form-control" id="author" name="author" type="text"></input> -->
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="category" class="col-sm-2 control-label">Category</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="category" name="category" type="text"></input>
+					<select multiple class="form-control" name="category_id[]" size="<?php echo sizeof($categories);?>">
+						<?php foreach($categories as $category) { ?>
+							<option value="<?php echo $category['category_id'];?>"><?php echo $category['category_name'];?></option>
+						<? } ?>
+					</select>
+					<!-- <input class="form-control" id="category" name="category" type="text"></input> -->
 				</div>
 			</div>
 			<div class="form-group">
@@ -92,7 +109,7 @@
 					<textarea class="form-control" id="book_info" name="book_info"></textarea>
 				</div>
 			</div>
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label for="series_info" class="col-sm-2 control-label">Series Info</label>
 				<div class="col-sm-10">
 					<textarea class="form-control" id="series_info" name="series_info"></textarea>
@@ -103,7 +120,7 @@
 				<div class="col-sm-10">
 					<textarea class="form-control" id="about_author" name="about_author"></textarea>
 				</div>
-			</div>
+			</div> -->
 			<div class="form-group">
 				<label for="review" class="col-sm-2 control-label">Review</label>
 				<div class="col-sm-10">
@@ -155,19 +172,56 @@
 				<div class="form-group">
 					<label for="series" class="col-sm-2 control-label">Series</label>
 					<div class="col-sm-10">
-						<input class="form-control" id="series" name="series" type="text" value="<?php echo $book['series']; ?>"></input>
+						<select class="form-control" id="series<?php echo $book['book_id'];?>" name="series_id">
+							<option>series</option>
+							<?php foreach($series as $s) { ?>
+								<option value="<?php echo $s['series_id'];?>"><?php echo $s['series_name'];?></option>
+							<? } ?>
+						</select>
+						<script type="text/javascript">
+							$('#series<?php echo $book['book_id'];?>').val(<?php echo $book['series_id'];?>);
+						</script>
+						<!-- <input class="form-control" id="series" name="series" type="text" value="<?php echo $book['series_id']; ?>"></input> -->
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="author" class="col-sm-2 control-label">Author</label>
 					<div class="col-sm-10">
-						<input class="form-control" id="author" name="author" type="text" value="<?php echo $book['author']; ?>"></input>
+						<select class="form-control" id="author<?php echo $book['book_id'];?>" name="author_id">
+							<option>author</option>
+							<?php foreach($authors as $author) { ?>
+								<option value="<?php echo $author['author_id'];?>"><?php echo $author['author_name'];?></option>
+							<? } ?>
+						</select>
+						<script type="text/javascript">
+							$('#author<?php echo $book['book_id'];?>').val(<?php echo $book['author_id'];?>);
+						</script>
+						<!-- <input class="form-control" id="author" name="author" type="text" value="<?php echo $book['author_id']; ?>"></input> -->
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="category" class="col-sm-2 control-label">Category</label>
-					<div class="col-sm-10">
+					<!-- <div class="col-sm-10">
 						<input class="form-control" id="category" name="category" type="text" value="<?php echo $book['category']; ?>"></input>
+					</div> -->
+					<div class="col-sm-10">
+						<select multiple class="form-control" id="bc<?php echo $book['book_id'];?>" name="category_id[]" size="<?php echo sizeof($categories);?>">
+							<?php foreach($categories as $category) { ?>
+								<option value="<?php echo $category['category_id'];?>"><?php echo $category['category_name'];?></option>
+							<? } ?>
+						</select>
+						<script type="text/javascript">
+							var categories = [
+							<?php
+								$cs = explode(" ", $book['category_ids']);
+								foreach ($cs as $c) {
+									echo "\"" . $c . "\",";
+								}
+							?>
+							];
+							$('#bc<?php echo $book['book_id'];?>').val(categories);
+						</script>
+					<!-- <input class="form-control" id="category" name="category" type="text"></input> -->
 					</div>
 				</div>
 				<div class="form-group">
@@ -218,7 +272,7 @@
 						<textarea class="form-control" id="book_info" name="book_info"><?php echo $book['book_info']; ?></textarea>
 					</div>
 				</div>
-				<div class="form-group">
+			<!-- 	<div class="form-group">
 					<label for="series_info" class="col-sm-2 control-label">Series Info</label>
 					<div class="col-sm-10">
 						<textarea class="form-control" id="series_info" name="series_info"><?php echo $book['series_info']; ?></textarea>
@@ -229,7 +283,7 @@
 					<div class="col-sm-10">
 						<textarea class="form-control" id="about_author" name="about_author"><?php echo $book['about_author']; ?></textarea>
 					</div>
-				</div>
+				</div> -->
 				<div class="form-group">
 					<label for="review" class="col-sm-2 control-label">Review</label>
 					<div class="col-sm-10">
@@ -248,11 +302,11 @@
 						<input class="form-control" id="cover_img_back" name="cover_img_back" type="file" value="<?php echo $book['cover_img_back']; ?>"></input>
 					</div>
 				</div>
-				<div style="display: none;"><input name="id" value="<?php echo $book['id']; ?>"></input></div>
+				<div style="display: none;"><input name="book_id" value="<?php echo $book['book_id']; ?>"></input></div>
 				<button type="submit" class="btn btn-primary" style="float: right;">Save</button>
 			<?php echo form_close(); ?>
 			<?php echo form_open('admin_c/books_page_delete'); ?>
-				<div style="display: none;"><input name="id" value="<?php echo $book['id']; ?>"></input></div>
+				<div style="display: none;"><input name="book_id" value="<?php echo $book['book_id']; ?>"></input></div>
 				<button type="submit" class="btn btn-danger" style="float: right; margin-right: 5px;">Remove</button>	
 			<?php echo form_close(); ?>
 			<br><br><br>

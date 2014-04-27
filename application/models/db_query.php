@@ -22,4 +22,19 @@ class Db_Query extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function get_categories_db() {
+		$query = $this->db->query('SELECT * FROM categories');
+		return $query->result_array();
+	}
+
+	public function get_series_db() {
+		$query = $this->db->query('SELECT * FROM series');
+		return $query->result_array();
+	}
+
+	public function get_authors_db() {
+		$query = $this->db->query('SELECT * FROM authors');
+		return $query->result_array();
+	}
+
 }

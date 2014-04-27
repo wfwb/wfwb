@@ -142,9 +142,73 @@
 				<!-- <h1 style="color: #ffffff; text-align: center; padding-top: 12px;">หนังสือใหม่</h1> -->
 			<!-- </div> -->
 			<!-- <hr style="border-top: 1px solid #221F20;"> -->
-			<h1 style="margin-left: 50px;">หนังสือใหม่</h1>
-			<hr style="border-top: 1px solid #f2cd34;">
-			<div class="row" style="margin: 50px 0 20px 0;">
+			<!-- <h1 style="margin-left: 50px;">หนังสือใหม่</h1> -->
+			<!-- <hr style="border-top: 1px solid #f2cd34;"> -->
+
+			<?php 
+
+				$no_book = sizeof($new_releases);
+				$index = 0;
+				$id = 1;
+
+				while ($no_book > 0) {
+			?>
+
+				<?php if ($id > 1) { ?> 
+					<div id="<?php echo $id;?>" style="display: none;">
+				<? } else { ?> 
+					<div id="<?php echo $id;?>">
+				<? } ?>
+
+					<?php for ($i = 0; $i < 2 && $no_book > 0; $i++) { ?>
+
+						<div class="row" style="margin: 50px 0 50px 0;">
+
+							<?php for ($j = 0; $j < 4 && $no_book > 0; $j++) { ?>
+
+								<a href="#" style="color: #252120;">
+									<div class="col-md-3" style="text-align: center; line-height: 10px;">
+										<img src="<?php echo $new_releases[$index]['cover_img_front']; ?>" width="200" style="padding: 5px 5px 5px 5px; border: 8px solid #FFEC99; margin: 0 0 10px 0;">
+										<h4 style="font-weight: bold;"><?php echo $new_releases[$index]['book_name']; ?></h4>
+										<p style="font-size: 15px; color: #2e8ece;"><?php echo $new_releases[$index]['author_name']; ?></p>
+										<p style="color: #7f8c8d;"><?php echo $new_releases[$index]['price']; ?> บาท ส่วนลด <?php echo $new_releases[$index]['discount']; ?>%</p>
+									</div>
+								</a>
+
+							<? 
+								$no_book--;
+								$index++;
+							} ?>
+
+						</div>
+
+					<? } ?>
+
+				</div>
+
+				<? $id++; ?>
+
+			<?	
+				}
+			?>
+
+			<!-- <?php
+				$i = sizeof($new_releases);
+				while ($i > 0) { ?>
+				<div class="row" style="margin: 50px 0 20px 0;">
+					<?php for ($j = 0; $j < 4 && $i > 0; $j++) { ?> 
+						<div class="col-md-3" style="text-align: center; line-height: 10px;">
+							<img src="<?php echo $new_releases[$j]['cover_img_front']; ?>" width="200" style="border: 8px solid #FFEC99; margin: 0 0 10px 0; padding: 5px 5px 5px 5px;">
+							<h4 style="font-weight: bold;"><?php echo $new_releases[$j]['book_name']; ?></h4>
+							<p style="font-size: 15px; color: #2e8ece;"><?php echo $new_releases[$j]['author_name']; ?></p>
+							<p style="color: #7f8c8d;"><?php echo $new_releases[$j]['price']; ?> บาท ส่วนลด <?php echo $new_releases[$j]['discount']; ?>%</p>
+						</div>
+						<? $i--; ?>					
+				<?	}  ?>
+				</div>
+			<?	} ?> -->
+
+			<!-- <div class="row" style="margin: 50px 0 20px 0;">
 				<a href="#" style="color: #252120;">
 					<div class="col-md-3" style="text-align: center; line-height: 10px;">
 						<img src="<?php echo base_url();?>assets/img/books/9-f.png" width="200" style="border: 8px solid #FFEC99; margin: 0 0 10px 0; padding: 5px 5px 5px 5px;">
@@ -152,7 +216,7 @@
 						<p style="font-size: 15px; color: #2e8ece;">ลัลลาบาย</p>
 						<p style="color: #7f8c8d;">230 บาท ส่วนลด 15%</p>
 					</div>
-				</a>
+				</a> -->
 				<!-- <a href="#" style="color: #252120;">
 					<div class="col-md-3" style="text-align: center; line-height: 10px;">
 						<img src="<?php echo base_url();?>assets/img/books/6.png" width="200" style="border: 8px solid #cccccc; margin: 0 0 10px 0; padding: 5px 5px 5px 5px;">
@@ -177,12 +241,12 @@
 						<p>320 บาท ส่วนลด 15%</p>
 					</div>
 				</a> -->
-			</div>
+			<!-- </div> -->
 			<div id="page-selection" style="text-align: center;"></div>
 			<script>
 				// init bootpag
 				$('#page-selection').bootpag({
-				    total: 1
+				    total: <?php echo ceil(sizeof($new_releases)/8); ?>
 				}).on("page", function(event, num){
 				    // $("#content").html("Page " + num); // or some ajax content loading...
 				    for (i = 0; i < 10; i++) {
@@ -190,7 +254,7 @@
 				    }
 				   	$("#" + num).show(); 
 				    // ... after content load -> change total to 10
-				    $(this).bootpag({total: 1, maxVisible: 1});
+				    $(this).bootpag({total: <?php echo ceil(sizeof($new_releases)/8); ?>, maxVisible: <?php echo ceil(sizeof($new_releases)/8); ?>});
 				 
 				});
 			</script>
@@ -310,7 +374,54 @@
 			<!-- <h1 style="text-align: right; margin-right: 50px;">หนังสือทั้งหมด</h1> -->
 			<!-- <hr style="border-top: 1px solid #f2cd34;"> -->
 
-			<div id="1">
+			<?php 
+
+				$no_book = sizeof($books);
+				$index = 0;
+				$id = 1;
+
+				while ($no_book > 0) {
+			?>
+
+				<?php if ($id > 1) { ?> 
+					<div id="<?php echo $id;?>" style="display: none;">
+				<? } else { ?> 
+					<div id="<?php echo $id;?>">
+				<? } ?>
+
+					<?php for ($i = 0; $i < 2 && $no_book > 0; $i++) { ?>
+
+						<div class="row" style="margin: 50px 0 50px 0;">
+
+							<?php for ($j = 0; $j < 4 && $no_book > 0; $j++) { ?>
+
+								<a href="#" style="color: #252120;">
+									<div class="col-md-3" style="text-align: center; line-height: 10px;">
+										<img src="<?php echo $books[$index]['cover_img_front']; ?>" width="200" style="padding: 5px 5px 5px 5px; border: 8px solid #FFEC99; margin: 0 0 10px 0;">
+										<h4 style="font-weight: bold;"><?php echo $books[$index]['book_name']; ?></h4>
+										<p style="font-size: 15px; color: #2e8ece;"><?php echo $books[$index]['author_name']; ?></p>
+										<p style="color: #7f8c8d;"><?php echo $books[$index]['price']; ?> บาท ส่วนลด <?php echo $books[$index]['discount']; ?>%</p>
+									</div>
+								</a>
+
+							<? 
+								$no_book--;
+								$index++;
+							} ?>
+
+						</div>
+
+					<? } ?>
+
+				</div>
+
+				<? $id++; ?>
+
+			<?	
+				}
+			?>
+
+			<!-- <div id="1">
 				<div class="row" style="margin: 50px 0 50px 0;">
 					<a href="#" style="color: #252120;">
 						<div class="col-md-3" style="text-align: center;">
@@ -380,10 +491,10 @@
 						</div>
 					</a>
 				</div>
-				<!-- <hr> -->
-			</div>
+				<hr>
+			</div> -->
 
-			<div id="2" style="display:none;">
+			<!-- <div id="2" style="display:none;">
 				<div class="row" style="margin: 50px 0 50px 0;">
 					<a href="#" style="color: #252120;">
 						<div class="col-md-3" style="text-align: center;">
@@ -394,7 +505,7 @@
 						</div>
 					</a>
 				</div>
-			</div>
+			</div> -->
 
 			<!--
 			<?php for ($i = 2; $i <= 5; $i++) { ?>
@@ -475,7 +586,7 @@
 					<script>
 						// init bootpag
 						$('#all-selection').bootpag({
-						    total: 2
+						    total: <?php echo ceil(sizeof($books)/8); ?>
 						}).on("page", function(event, num){
 						    // $("#content").html("Page " + num); // or some ajax content loading...
 						    for (i = 0; i < 10; i++) {
@@ -483,7 +594,7 @@
 						    }
 						   	$("#" + num).show(); 
 						    // ... after content load -> change total to 10
-						    $(this).bootpag({total: 2, maxVisible: 2});
+						    $(this).bootpag({total: <?php echo ceil(sizeof($books)/8); ?>, maxVisible: <?php echo ceil(sizeof($books)/8); ?>});
 						 
 						});
 					</script>

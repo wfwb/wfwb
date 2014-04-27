@@ -25,7 +25,10 @@ class Admin_C extends CI_Controller {
 		$this->load->model('join_us_m');
 		$this->load->model('news_m');
 		$this->load->model('books_m');
-
+		$this->load->model('categories_m');
+		$this->load->model('series_m');
+		$this->load->model('authors_m');
+		$this->load->model('bookshelves_m');
 	}
 
 	public function index() {
@@ -87,6 +90,9 @@ class Admin_C extends CI_Controller {
 
 		if ($this->ion_auth->is_admin()) {
 			$data['books'] = $this->db_query->get_books_db();
+			$data['authors'] = $this->db_query->get_authors_db();
+			$data['categories'] = $this->db_query->get_categories_db();
+			$data['series'] = $this->db_query->get_series_db();
 			$this->load->view('admin/header');
 			$this->load->view('admin/books', $data);	
 		}	
@@ -110,10 +116,11 @@ class Admin_C extends CI_Controller {
 		$this->upload->do_upload('cover_img_front');
 		$this->upload->do_upload('cover_img_back');
 
-		$data = array();
-		$data['cover_img_front'] = "";
-		$data['cover_img_back'] = "";
-		$data['demo_link'] = "";
+		$data = array(
+			'cover_img_front' => "",
+			'cover_img_back' => "",
+			'demo_link' => ""
+		);
 
 		$data['cover_img_front'] = $path."/".$_FILES['cover_img_front']['name'];
 		$data['cover_img_back'] = $path."/".$_FILES['cover_img_back']['name'];
@@ -128,18 +135,45 @@ class Admin_C extends CI_Controller {
 		$this->upload->do_upload('demo_link');
 		$data['demo_link'] = $path2."/".$_FILES['demo_link']['name'];
 
-		$this->books_m->add_book($data);
+		$this->books_m->set_book($data);
+
+		// add to bookshelves
+
+		$this->bookshelves_m->set_book($this->db->insert_id(), $this->books_m->get_books_size());
+
 		redirect('/admin_books_page', 'refresh');
 	}
 
 	public function books_page_edit() {
-		$this->books_m->edit_book();
+
+		$files = $this->books_m->get_file();
+
+		$data = array(
+			'cover_img_front' => $files['cover_img_front'],
+			'cover_img_back' => $files['cover_img_back'],
+			'demo_link' => $files['demo_link']
+		);
+
+		// if ($_FILES['cover_img_front']['name'] != "") {
+
+		// }
+
+		// if ($_FILES['cover_img_back']['name'] != "") {
+
+		// }
+
+		// if ($_FILES['demo_link']['name'] != "") {
+
+		// }
+
+		$this->books_m->set_book($data);
+
 		redirect('/admin_books_page', 'refresh');
 	}
 
 	public function books_page_delete() {
 		// get file path
-		$paths = $this->books_m->get_book_file();
+		$paths = $this->books_m->get_file();
 		// $this->load->helper("file");
 		foreach ($paths['0'] as $path) {
 			unlink($path);
@@ -236,6 +270,153 @@ class Admin_C extends CI_Controller {
 		redirect('/admin_join_us_page', 'refresh');
 	}
 
+	// authors page
+
+	public function authors_page() {
+
+		if ($this->ion_auth->is_admin()) {
+			$data['authors'] = $this->db_query->get_authors_db();
+			$this->load->view('admin/header');
+			$this->load->view('admin/authors', $data);	
+		}	
+		else {
+			redirect('/', 'refresh');
+		}
+
+	}
+
+	// authors page
+
+	public function authors_page_add() {
+
+		$this->authors_m->set_author();
+		redirect('/admin_authors_page', 'refresh');
+
+	}
+
+	public function authors_page_edit() {
+
+		$this->authors_m->set_author();
+		redirect('/admin_authors_page', 'refresh');
+
+	}
+
+	public function authors_page_delete() {
+
+		$this->authors_m->delete_author();
+		redirect('/admin_authors_page', 'refresh');
+
+	}
+
+	// bookshelves page
+
+	public function bookshelves_page() {
+
+		if ($this->ion_auth->is_admin()) {
+			// $data['books'] = $this->db_query->get_books_db();
+			$data['new_releases'] = $this->bookshelves_m->get_new_releases();
+			$data['bookshelves'] = $this->bookshelves_m->get_books();
+			$this->load->view('admin/header');
+			$this->load->view('admin/bookshelves', $data);	
+		}	
+		else {
+			redirect('/', 'refresh');
+		}
+
+	}
+
+	public function add_new_release() {
+
+		$this->bookshelves_m->set_new_release();
+
+		redirect('/admin_bookshelves_page', 'refresh');
+
+	}
+
+	public function remove_new_release() {
+
+		$this->bookshelves_m->set_common();
+
+		redirect('/admin_bookshelves_page', 'refresh');
+
+	}
+
+	public function change_order() {
+		
+	}
+
+	// categories page
+
+	public function categories_page() {
+
+		if ($this->ion_auth->is_admin()) {
+			$data['categories'] = $this->db_query->get_categories_db();
+			$this->load->view('admin/header');
+			$this->load->view('admin/categories', $data);	
+		}	
+		else {
+			redirect('/', 'refresh');
+		}
+
+	}
+
+	public function categories_page_add() {
+
+		$this->categories_m->set_category();
+		redirect('/admin_categories_page', 'refresh');
+
+	}
+
+	public function categories_page_edit() {
+
+		$this->categories_m->set_category();
+		redirect('/admin_categories_page', 'refresh');
+
+	}
+
+	public function categories_page_delete() {
+
+		$this->categories_m->delete_category();
+		redirect('/admin_categories_page', 'refresh');
+
+	}
+	
+	// series page
+	
+	public function series_page() {
+
+		if ($this->ion_auth->is_admin()) {
+			$data['series'] = $this->db_query->get_series_db();
+			$this->load->view('admin/header');
+			$this->load->view('admin/series', $data);	
+		}	
+		else {
+			redirect('/', 'refresh');
+		}
+
+	}
+
+	public function series_page_add() {
+
+		$this->series_m->set_series();
+		redirect('/admin_series_page', 'refresh');
+
+	}
+
+	public function series_page_edit() {
+
+		$this->series_m->set_series();
+		redirect('/admin_series_page', 'refresh');
+
+	}
+
+	public function series_page_delete() {
+
+		$this->series_m->delete_series();
+		redirect('/admin_series_page', 'refresh');
+
+	}
+	
 }
 
 /* End of file welcome.php */

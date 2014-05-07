@@ -95,11 +95,34 @@
 
 	</script>
 
+	<style type="text/css">
+
+		.custom-btn {
+			padding: 20px 30px 20px 30px;
+			border-radius: 40px;
+			font-size: 20px;
+			background-color: #F1CC45;
+			color: #221F20;
+			border: 0px;
+		}
+
+		.custom-btn:hover{
+			background-color: #EBC54C;
+			color: #fff;
+		}
+
+	</style>
+
 	<!-- <div class="row" style="height: 400px; background-image: url(../wfwb/assets/img/test.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;"> -->
-	<div class="row" style="height: 100px; background-image: url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;">
+	<div class="row" style="height: 400px; background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%),url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0; text-align: center;">
 	<!-- <div class="row" style="height: 100px; margin: 0 0 0 0; background-color: #221f20;"> -->
 		<!-- <h1 style="color: #fff; margin: 80px 0 0 130px; font-size: 55px;">หนังสือใหม่</h1> -->
-		<h1 style="color: #fff; margin: 23px 0 0 120px; font-size: 55px;">หนังสือใหม่</h1>
+		<br><br>
+		<h1 style="color: #fff; font-size: 55px; text-align: center; margin-top: 50px;">ชั้นหนังสือ</h1>
+		<p style="color: #fff; font-size: 30px;">สำนักพิมพ์คำต่อคำ</p>
+		<br><br><br>
+		<a href="<?php echo base_url(); ?>how_to"><button class="custom-btn"><strong>วิธีการสั่งซื้อหนังสือ</strong></button></a>
+		<!-- <h1 style="color: #fff; margin: 23px 0 0 120px; font-size: 55px;">หนังสือใหม่</h1> -->
 		<!-- <div class="container">
 		<div class="col-md-6" style="background-image: url(../wfwb/assets/img/new_1.jpg); height: 530px;">
 			<h1 style="color: #ffffff; text-align: center;">หนังสือใหม่</h1>
@@ -109,7 +132,7 @@
 		</div>
 		</div> -->
 	</div>
-	<div class="row" style="height: 50px; margin: 0 0 0 0; background-color: #f2cd34">
+	<!-- <div class="row" style="height: 50px; margin: 0 0 0 0; background-color: #f2cd34"> -->
 		<!-- <div class="container" style="text-align: left; margin: 8px 110px; 0 0;">
 			<div class="btn-group" style="text-align: left;">
 				<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
@@ -141,7 +164,7 @@
 				</ul>
 			</div>
 		</div> -->
-	</div>
+	<!-- </div> -->
 
 	<!-- NEWS -->
 	<div class="row" style="height: auto; padding: 20px 0 20px 0; margin: 0 0 0 0;">
@@ -150,8 +173,9 @@
 				<!-- <h1 style="color: #ffffff; text-align: center; padding-top: 12px;">หนังสือใหม่</h1> -->
 			<!-- </div> -->
 			<!-- <hr style="border-top: 1px solid #221F20;"> -->
-			<!-- <h1 style="margin-left: 50px;">หนังสือใหม่</h1> -->
-			<!-- <hr style="border-top: 1px solid #f2cd34;"> -->
+			<!-- <h1 style="text-align: center; font-size: 50px;">หนังสือใหม่</h1> -->
+			<h1 style="margin-left: 50px;">หนังสือใหม่</h1>
+			<hr style="border-top: 2px solid #f2cd34;">
 
 			<?php 
 
@@ -301,11 +325,11 @@
 
 	<!-- <div class="row" style="height: 400px; background-image: url(../wfwb/assets/img/test.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0; opacity: 0.5;"> -->
 	<!-- <div class="row" style="height: 100px; margin: 0 0 0 0; background-color: #221F20"> -->
-	<div class="row" style="height: 100px; background-image: url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;">
+	<!-- <div class="row" style="height: 100px; background-image: url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;">
 		<h1 style="color: #ffffff; margin: 28px 120px 0 0; font-size: 55px; text-align: right;">หนังสือทั้งหมด</h1>
-	</div>
-	<div class="row" style="height: 50px; margin: 0 0 0 0; background-color: #f2cd34">
-		<div class="container" style="text-align: right; margin: 7px 0 0 0;">
+	</div> -->
+	<!-- <div class="row" style="height: 50px; margin: 0 0 0 0; background-color: #f2cd34">
+		<div class="container" style="text-align: right; margin: 7px 0 0 0;"> -->
 			<!-- <form class="form-horizontal col-md-4" role="form">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label" style="color: #fff;">หมวดหมู่</label>
@@ -342,19 +366,15 @@
 					</div>
 				</div>
 			</form> -->
-			<div class="btn-group" style="text-align: left;">
+			<!-- <div class="btn-group" style="text-align: left;">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 					หมวดหมู่ <span class="caret"></span>
 				</button>
-				<!-- <span class="btn filter" data&#45;filter=".5">TEST</span> -->
 				<ul class="dropdown-menu" role="menu">
 					<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
 					<? foreach($categories as $category) { ?>
 						<li class="filter" data-filter=".c<?php echo $category['category_id']; ?>"><a><?php echo $category['category_name']; ?></a></li>
 					<? } ?>
-					<!-- <li><a href="">โรแมนติกแฟนตาซี</a></li> -->
-					<!-- <li><a href="#">โรแมนติกคอเมดี้</a></li> -->
-					<!-- <li><a href="#">ดราม่า</a></li> -->
 				</ul>
 			</div>
 			<div class="btn-group" style="text-align: left;">
@@ -366,9 +386,6 @@
 					<? foreach($authors as $author) { ?>
 						<li class="filter" data-filter=".a<?php echo $author['author_id']; ?>"><a><?php echo $author['author_name']; ?></a></li>
 					<? } ?>
-					<!-- <li><a href="#">ดวงตะวัน</a></li> -->
-					<!-- <li><a href="#">อรพิม</a></li> -->
-					<!-- <li><a href="#">อรยุทธ์</a></li> -->
 				</ul>
 			</div>
 			<div class="btn-group" style="text-align: left;">
@@ -377,20 +394,52 @@
 				</button>
 				<ul class="dropdown-menu" role="menu">
 					<li class="filter" data-sort="name:asc"><a href="#">ชื่อหนังสือ</a></li>
-					<!-- <li><a href="#">ราคา (น้อย - มาก)</a></li> -->
-					<!-- <li><a href="#">ราคา (มาก - น้อย)</a></li> -->
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="row" style="height: auto; margin: 20px 0 0 0;">
 		<div class="container">
 			<!-- <div style="margin: 30px 0 0 -5px; height: 60px; width: 250px; background-color: #252120;"> -->
 			<!-- <h1 style="color: #ffffff; text-align: center; padding-top: 12px;">หนังสือใหม่</h1> -->
 			<!-- </div> -->
-			<!-- <h1 style="text-align: right; margin-right: 50px;">หนังสือทั้งหมด</h1> -->
+			<h1 style="text-align: right; margin-right: 50px;">หนังสือทั้งหมด</h1>
+			<hr style="border-top: 2px solid #221F20;">
 			<!-- <hr style="border-top: 1px solid #f2cd34;"> -->
+
+			<div style="text-align: right;">
+				<div class="btn-group" style="text-align: left;">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						หมวดหมู่ <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
+						<? foreach($categories as $category) { ?>
+							<li class="filter" data-filter=".<?php echo $category['category_id']; ?>"><a><?php echo $category['category_name']; ?></a></li>
+						<? } ?>
+					</ul>
+				</div>
+				<div class="btn-group" style="text-align: left;">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						นักเขียน <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
+						<? foreach($authors as $author) { ?>
+							<li class="filter" data-filter=".a<?php echo $author['author_id']; ?>"><a><?php echo $author['author_name']; ?></a></li>
+						<? } ?>
+					</ul>
+				</div>
+				<div class="btn-group" style="text-align: left;">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						เรียงตาม <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li class="filter" data-sort="name:asc"><a href="#">ชื่อหนังสือ</a></li>
+					</ul>
+				</div>
+			</div>
 
 			<!--
 			<?php foreach($books as $book) { ?>

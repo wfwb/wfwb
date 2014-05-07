@@ -5,8 +5,18 @@
 			$(".readmore").dotdotdot({
 				after: "a.1"
 			});
+
+			$(function() { 
+				// $(".mixitup").mixItUp();
+			});
 		});
 	</script>
+
+	<style>
+		/* .mixitup .mix { */
+		/* 	display: none; */
+		/* } */
+	</style>
 	
 	<div class="row" style="height: 100px; background-image: url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;">
 	<!-- <div class="row" style="height: 100px; margin: 0 0 0 0; background-color: #221f20;"> -->
@@ -23,13 +33,13 @@
 	</div>
 
 	<div class="row" style="margin: 70px 0 70px 0;">
-		<div class="container">
+		<div class="container mixitup">
 			<?php 
 				$i = 1;
 				foreach ($join_us as $thumbnail) { 
 			?>
 			<a href="www.google.com">
-			<div class="col-sm-4" style="text-align: center;">
+			<div class="col-sm-4 mix" style="text-align: center;">
 					<img src="<?php echo base_url()?><?php echo $thumbnail['thumbnail_img']?>">
 					<br><br>
 					<h4 class="dot" style="text-align: left; margin: 0 5px 13px 5px; font-weight: bold;"><?php echo $thumbnail['heading']; ?></h4>
@@ -42,7 +52,7 @@
 		</div>
 	</div>
 	
-	<div class="container" style="margin-top: -20px;">
+	<!-- <div class="container" style="margin-top: -20px;">
 		<hr style="border-top: 1px solid #f2cd34;">
 	</div>
 
@@ -64,7 +74,7 @@
 				$i++;
 			} ?>
 		</div>
-	</div>
+	</div> -->
 
 	
 	<!--<?php 

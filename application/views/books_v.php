@@ -77,6 +77,14 @@
 				$.scrollTo('#books-container', 800, {easing:'swing'} );
 			});
 
+			$(function(){
+
+				// Instantiate MixItUp:
+				// $('.mixitup').mixItUp();
+				$('#Container').mixItUp();
+
+			});
+
 		});
 
 		function change_hero(index) {
@@ -87,11 +95,34 @@
 
 	</script>
 
+	<style type="text/css">
+
+		.custom-btn {
+			padding: 20px 30px 20px 30px;
+			border-radius: 40px;
+			font-size: 20px;
+			background-color: #F1CC45;
+			color: #221F20;
+			border: 0px;
+		}
+
+		.custom-btn:hover{
+			background-color: #EBC54C;
+			color: #fff;
+		}
+
+	</style>
+
 	<!-- <div class="row" style="height: 400px; background-image: url(../wfwb/assets/img/test.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;"> -->
-	<div class="row" style="height: 100px; background-image: url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;">
+	<div class="row" style="height: 400px; background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%),url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0; text-align: center;">
 	<!-- <div class="row" style="height: 100px; margin: 0 0 0 0; background-color: #221f20;"> -->
 		<!-- <h1 style="color: #fff; margin: 80px 0 0 130px; font-size: 55px;">หนังสือใหม่</h1> -->
-		<h1 style="color: #fff; margin: 23px 0 0 120px; font-size: 55px;">หนังสือใหม่</h1>
+		<br><br>
+		<h1 style="color: #fff; font-size: 55px; text-align: center; margin-top: 50px;">ชั้นหนังสือ</h1>
+		<p style="color: #fff; font-size: 30px;">สำนักพิมพ์คำต่อคำ</p>
+		<br><br><br>
+		<a href="<?php echo base_url(); ?>how_to"><button class="custom-btn"><strong>วิธีการสั่งซื้อหนังสือ</strong></button></a>
+		<!-- <h1 style="color: #fff; margin: 23px 0 0 120px; font-size: 55px;">หนังสือใหม่</h1> -->
 		<!-- <div class="container">
 		<div class="col-md-6" style="background-image: url(../wfwb/assets/img/new_1.jpg); height: 530px;">
 			<h1 style="color: #ffffff; text-align: center;">หนังสือใหม่</h1>
@@ -101,7 +132,7 @@
 		</div>
 		</div> -->
 	</div>
-	<div class="row" style="height: 50px; margin: 0 0 0 0; background-color: #f2cd34">
+	<!-- <div class="row" style="height: 50px; margin: 0 0 0 0; background-color: #f2cd34"> -->
 		<!-- <div class="container" style="text-align: left; margin: 8px 110px; 0 0;">
 			<div class="btn-group" style="text-align: left;">
 				<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
@@ -133,7 +164,7 @@
 				</ul>
 			</div>
 		</div> -->
-	</div>
+	<!-- </div> -->
 
 	<!-- NEWS -->
 	<div class="row" style="height: auto; padding: 20px 0 20px 0; margin: 0 0 0 0;">
@@ -142,9 +173,74 @@
 				<!-- <h1 style="color: #ffffff; text-align: center; padding-top: 12px;">หนังสือใหม่</h1> -->
 			<!-- </div> -->
 			<!-- <hr style="border-top: 1px solid #221F20;"> -->
+			<!-- <h1 style="text-align: center; font-size: 50px;">หนังสือใหม่</h1> -->
 			<h1 style="margin-left: 50px;">หนังสือใหม่</h1>
-			<hr style="border-top: 1px solid #f2cd34;">
-			<div class="row" style="margin: 50px 0 20px 0;">
+			<hr style="border-top: 2px solid #f2cd34;">
+
+			<?php 
+
+				$no_book = sizeof($new_releases);
+				$index = 0;
+				$id = 1;
+
+				while ($no_book > 0) {
+			?>
+
+				<?php if ($id > 1) { ?> 
+					<div id="new<?php echo $id;?>" style="display: none;">
+				<? } else { ?> 
+					<div id="new<?php echo $id;?>">
+				<? } ?>
+
+					<?php for ($i = 0; $i < 2 && $no_book > 0; $i++) { ?>
+
+						<div class="row" style="margin: 50px 0 50px 0;">
+
+							<?php for ($j = 0; $j < 4 && $no_book > 0; $j++) { ?>
+
+								<a href="<?php echo base_url(); ?>book/<?php echo $new_releases[$index]['book_id']; ?>" style="color: #252120;">
+									<div class="col-md-3" style="text-align: center; line-height: 10px;">
+										<img src="<?php echo $new_releases[$index]['cover_img_front']; ?>" width="200" style="padding: 5px 5px 5px 5px; border: 8px solid #FFEC99; margin: 0 0 10px 0;">
+										<h4 style="font-weight: bold;"><?php echo $new_releases[$index]['book_name']; ?></h4>
+										<p style="font-size: 15px; color: #2e8ece;"><?php echo $new_releases[$index]['author_name']; ?></p>
+										<p style="color: #7f8c8d;"><?php echo $new_releases[$index]['price']; ?> บาท ส่วนลด <?php echo $new_releases[$index]['discount']; ?>%</p>
+									</div>
+								</a>
+
+							<? 
+								$no_book--;
+								$index++;
+							} ?>
+
+						</div>
+
+					<? } ?>
+
+				</div>
+
+				<? $id++; ?>
+
+			<?	
+				}
+			?>
+
+			<!-- <?php
+				$i = sizeof($new_releases);
+				while ($i > 0) { ?>
+				<div class="row" style="margin: 50px 0 20px 0;">
+					<?php for ($j = 0; $j < 4 && $i > 0; $j++) { ?> 
+						<div class="col-md-3" style="text-align: center; line-height: 10px;">
+							<img src="<?php echo $new_releases[$j]['cover_img_front']; ?>" width="200" style="border: 8px solid #FFEC99; margin: 0 0 10px 0; padding: 5px 5px 5px 5px;">
+							<h4 style="font-weight: bold;"><?php echo $new_releases[$j]['book_name']; ?></h4>
+							<p style="font-size: 15px; color: #2e8ece;"><?php echo $new_releases[$j]['author_name']; ?></p>
+							<p style="color: #7f8c8d;"><?php echo $new_releases[$j]['price']; ?> บาท ส่วนลด <?php echo $new_releases[$j]['discount']; ?>%</p>
+						</div>
+						<? $i--; ?>					
+				<?	}  ?>
+				</div>
+			<?	} ?> -->
+
+			<!-- <div class="row" style="margin: 50px 0 20px 0;">
 				<a href="#" style="color: #252120;">
 					<div class="col-md-3" style="text-align: center; line-height: 10px;">
 						<img src="<?php echo base_url();?>assets/img/books/9-f.png" width="200" style="border: 8px solid #FFEC99; margin: 0 0 10px 0; padding: 5px 5px 5px 5px;">
@@ -152,7 +248,7 @@
 						<p style="font-size: 15px; color: #2e8ece;">ลัลลาบาย</p>
 						<p style="color: #7f8c8d;">230 บาท ส่วนลด 15%</p>
 					</div>
-				</a>
+				</a> -->
 				<!-- <a href="#" style="color: #252120;">
 					<div class="col-md-3" style="text-align: center; line-height: 10px;">
 						<img src="<?php echo base_url();?>assets/img/books/6.png" width="200" style="border: 8px solid #cccccc; margin: 0 0 10px 0; padding: 5px 5px 5px 5px;">
@@ -177,20 +273,20 @@
 						<p>320 บาท ส่วนลด 15%</p>
 					</div>
 				</a> -->
-			</div>
-			<div id="page-selection" style="text-align: center;"></div>
+			<!-- </div> -->
+			<!-- <div id="page-selection" style="text-align: center;"></div> -->
 			<script>
 				// init bootpag
 				$('#page-selection').bootpag({
-				    total: 1
+				    total: <?php echo ceil(sizeof($new_releases)/8); ?>
 				}).on("page", function(event, num){
 				    // $("#content").html("Page " + num); // or some ajax content loading...
 				    for (i = 0; i < 10; i++) {
-				    	$("#" + i).hide();
+				    	$("#new" + i).hide();
 				    }
-				   	$("#" + num).show(); 
+				   	$("#new" + num).show(); 
 				    // ... after content load -> change total to 10
-				    $(this).bootpag({total: 1, maxVisible: 1});
+				    $(this).bootpag({total: <?php echo ceil(sizeof($new_releases)/8); ?>, maxVisible: <?php echo ceil(sizeof($new_releases)/8); ?>});
 				 
 				});
 			</script>
@@ -229,11 +325,11 @@
 
 	<!-- <div class="row" style="height: 400px; background-image: url(../wfwb/assets/img/test.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0; opacity: 0.5;"> -->
 	<!-- <div class="row" style="height: 100px; margin: 0 0 0 0; background-color: #221F20"> -->
-	<div class="row" style="height: 100px; background-image: url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;">
+	<!-- <div class="row" style="height: 100px; background-image: url(../wfwb/assets/img/books.png); background-position: center center; background-repeat: no-repeat; background-size: cover; margin: 0 0 0 0;">
 		<h1 style="color: #ffffff; margin: 28px 120px 0 0; font-size: 55px; text-align: right;">หนังสือทั้งหมด</h1>
-	</div>
-	<div class="row" style="height: 50px; margin: 0 0 0 0; background-color: #f2cd34">
-		<div class="container" style="text-align: right; margin: 7px 0 0 0;">
+	</div> -->
+	<!-- <div class="row" style="height: 50px; margin: 0 0 0 0; background-color: #f2cd34">
+		<div class="container" style="text-align: right; margin: 7px 0 0 0;"> -->
 			<!-- <form class="form-horizontal col-md-4" role="form">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-3 control-label" style="color: #fff;">หมวดหมู่</label>
@@ -270,14 +366,15 @@
 					</div>
 				</div>
 			</form> -->
-			<div class="btn-group" style="text-align: left;">
+			<!-- <div class="btn-group" style="text-align: left;">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 					หมวดหมู่ <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">โรแมนติกแฟนตาซี</a></li>
-					<li><a href="#">โรแมนติกคอเมดี้</a></li>
-					<li><a href="#">ดราม่า</a></li>
+					<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
+					<? foreach($categories as $category) { ?>
+						<li class="filter" data-filter=".c<?php echo $category['category_id']; ?>"><a><?php echo $category['category_name']; ?></a></li>
+					<? } ?>
 				</ul>
 			</div>
 			<div class="btn-group" style="text-align: left;">
@@ -285,9 +382,10 @@
 					นักเขียน <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">ดวงตะวัน</a></li>
-					<li><a href="#">อรพิม</a></li>
-					<li><a href="#">อรยุทธ์</a></li>
+					<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
+					<? foreach($authors as $author) { ?>
+						<li class="filter" data-filter=".a<?php echo $author['author_id']; ?>"><a><?php echo $author['author_name']; ?></a></li>
+					<? } ?>
 				</ul>
 			</div>
 			<div class="btn-group" style="text-align: left;">
@@ -295,22 +393,120 @@
 					เรียงตาม <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">ชื่อหนังสือ</a></li>
-					<li><a href="#">ราคา</a></li>
+					<li class="filter" data-sort="name:asc"><a href="#">ชื่อหนังสือ</a></li>
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="row" style="height: auto; margin: 20px 0 0 0;">
 		<div class="container">
 			<!-- <div style="margin: 30px 0 0 -5px; height: 60px; width: 250px; background-color: #252120;"> -->
 			<!-- <h1 style="color: #ffffff; text-align: center; padding-top: 12px;">หนังสือใหม่</h1> -->
 			<!-- </div> -->
-			<!-- <h1 style="text-align: right; margin-right: 50px;">หนังสือทั้งหมด</h1> -->
+			<h1 style="text-align: right; margin-right: 50px;">หนังสือทั้งหมด</h1>
+			<hr style="border-top: 2px solid #221F20;">
 			<!-- <hr style="border-top: 1px solid #f2cd34;"> -->
 
-			<div id="1">
+			<div style="text-align: right;">
+				<div class="btn-group" style="text-align: left;">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						หมวดหมู่ <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
+						<? foreach($categories as $category) { ?>
+							<li class="filter" data-filter=".<?php echo $category['category_id']; ?>"><a><?php echo $category['category_name']; ?></a></li>
+						<? } ?>
+					</ul>
+				</div>
+				<div class="btn-group" style="text-align: left;">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						นักเขียน <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
+						<? foreach($authors as $author) { ?>
+							<li class="filter" data-filter=".a<?php echo $author['author_id']; ?>"><a><?php echo $author['author_name']; ?></a></li>
+						<? } ?>
+					</ul>
+				</div>
+				<div class="btn-group" style="text-align: left;">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						เรียงตาม <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li class="filter" data-sort="name:asc"><a href="#">ชื่อหนังสือ</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!--
+			<?php foreach($books as $book) { ?>
+
+				<div class="col-md-3 mix <?php echo $book['category_ids'];?>" style="display: inline-block;">
+					<a href="#" style="color: #252120;">
+						<div class="col-md-3 mix <?php echo $book['category_ids']; ?>" style="text-align: center; line-height: 10px;">
+							<img src="<?php echo $book['cover_img_front']; ?>" width="200" style="padding: 5px 5px 5px 5px; border: 8px solid #FFEC99; margin: 0 0 10px 0;">
+							<h4 style="font-weight: bold;"><?php echo $book['book_name']; ?></h4>
+							<p style="font-size: 15px; color: #2e8ece;"><?php echo $book['author_name']; ?></p>
+							<p style="color: #7f8c8d;"><?php echo $book['price']; ?> บาท ส่วนลด <?php echo $book['discount']; ?>%</p>
+						</div>
+					</a>
+				</div>
+
+			<? } ?>
+			-->
+
+						<!-- <div class="col&#45;md&#45;3 mix cat&#45;1" style="text&#45;align: center; line&#45;height: 10px;"> -->
+			<?php 
+
+				$no_book = sizeof($books);
+				$index = 0;
+				$id = 1;
+
+				while ($no_book > 0) {
+			?>
+
+				<?php if ($id > 1) { ?> 
+					<div id="all<?php echo $id;?>" style="display: none;">
+				<? } else { ?> 
+					<div id="all<?php echo $id;?>">
+				<? } ?>
+
+					<?php for ($i = 0; $i < 2 && $no_book > 0; $i++) { ?>
+
+						<div class="row mixitup" id="Container" style="margin: 50px 0 50px 0;">
+
+							<?php for ($j = 0; $j < sizeof($books); $j++) { ?>
+
+								<a href="#" style="color: #252120;">
+									<div class="col-md-3 mix <?php echo $books[$index]['category_ids']; ?> a<?php echo $books[$index]['author_id']; ?>" data-name="<?php echo $books[$index]['book_name'];?>" style="text-align: center; line-height: 10px; margin-bottom: 20px;">
+										<img src="<?php echo $books[$index]['cover_img_front']; ?>" width="200" style="padding: 5px 5px 5px 5px; border: 8px solid #FFEC99; margin: 0 0 10px 0;">
+										<h4 style="font-weight: bold;"><?php echo $books[$index]['book_name']; ?></h4>
+										<p style="font-size: 15px; color: #2e8ece;"><?php echo $books[$index]['author_name']; ?></p>
+										<p style="color: #7f8c8d;"><?php echo $books[$index]['price']; ?> บาท ส่วนลด <?php echo $books[$index]['discount']; ?>%</p>
+									</div>
+								</a>
+
+							<? 
+								$no_book--;
+								$index++;
+							} ?>
+
+						</div>
+
+					<? } ?>
+
+				</div>
+
+				<? $id++; ?>
+
+			<?	
+				}
+			?>
+
+			<!-- <div id="1">
 				<div class="row" style="margin: 50px 0 50px 0;">
 					<a href="#" style="color: #252120;">
 						<div class="col-md-3" style="text-align: center;">
@@ -380,10 +576,10 @@
 						</div>
 					</a>
 				</div>
-				<!-- <hr> -->
-			</div>
+				<hr>
+			</div> -->
 
-			<div id="2" style="display:none;">
+			<!-- <div id="2" style="display:none;">
 				<div class="row" style="margin: 50px 0 50px 0;">
 					<a href="#" style="color: #252120;">
 						<div class="col-md-3" style="text-align: center;">
@@ -394,7 +590,7 @@
 						</div>
 					</a>
 				</div>
-			</div>
+			</div> -->
 
 			<!--
 			<?php for ($i = 2; $i <= 5; $i++) { ?>
@@ -471,21 +667,20 @@
 			</div>
 			<? } ?>
 		-->
-			<div id="all-selection" style="text-align: center; margin-bottom: 30px;"></div>
-					<script>
-						// init bootpag
-						$('#all-selection').bootpag({
-						    total: 2
-						}).on("page", function(event, num){
-						    // $("#content").html("Page " + num); // or some ajax content loading...
-						    for (i = 0; i < 10; i++) {
-						    	$("#" + i).hide();
-						    }
-						   	$("#" + num).show(); 
-						    // ... after content load -> change total to 10
-						    $(this).bootpag({total: 2, maxVisible: 2});
-						 
-						});
-					</script>
+			<!-- <div id="all&#45;selection" style="text&#45;align: center; margin&#45;bottom: 30px;"></div> -->
+			<script>
+				// init bootpag
+				$('#all-selection').bootpag({
+				    total: <?php echo ceil(sizeof($books)/8); ?>
+					}).on("page", function(event, num){
+				    // $("#content").html("Page " + num); // or some ajax content loading...
+				    for (i = 0; i < 10; i++) {
+				    	$("#all" + i).hide();
+				    }
+				   	$("#all" + num).show(); 
+				    // ... after content load -> change total to 10
+				    $(this).bootpag({total: <?php echo ceil(sizeof($books)/8); ?>, maxVisible: <?php echo ceil(sizeof($books)/8); ?>});
+				});
+			</script>
 		</div>
 	</div>

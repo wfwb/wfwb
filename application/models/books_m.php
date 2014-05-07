@@ -1,92 +1,132 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class Books_m extends CI_Model {
+class Books_M extends CI_Model {
 
-	public function add_book($data) {
+	public function __construct() {
+	}
+
+	public function set_book($data) {
 
 		$data = array(
-			'book_name' => $this->input->post('book_name'),
-			'book_name_decor' => $this->input->post('book_name_decor'),
-			'series' => $this->input->post('series'),
-			'author' => $this->input->post('author'),
-			'category' => $this->input->post('category'),
-			'ISBN' => $this->input->post('ISBN'),
-			'publish' => $this->input->post('publish'),
-			'cover_inside' => $this->input->post('cover_inside'),
-			'total_pages' => $this->input->post('total_pages'),
-			'price' => $this->input->post('price'),
-			'discount' => $this->input->post('discount'),
-			'demo_link' => $data['demo_link'],
-			'book_info' => $this->input->post('book_info'),
-			'series_info' => $this->input->post('series_info'),
-			'about_author' => $this->input->post('about_author'),
-			'review' => $this->input->post('review'),
-			'cover_img_front' => $data['cover_img_front'],
-			'cover_img_back' => $data['cover_img_back']
-
+			'book_name'			=> $this->input->post('book_name'),
+			'book_name_decor'	=> $this->input->post('book_name_decor'),
+			'ISBN'				=> $this->input->post('ISBN'),
+			'publish'			=> $this->input->post('publish'),
+			'cover_inside'		=> $this->input->post('cover_inside'),
+			'total_pages'		=> $this->input->post('total_pages'),
+			'price'				=> $this->input->post('price'),
+			'discount'			=> $this->input->post('discount'),
+			'book_info'			=> $this->input->post('book_info'),
+			'review'			=> $this->input->post('review'),
+			'demo_link'			=> $data['demo_link'],
+			'cover_img_front'	=> $data['cover_img_front'],
+			'cover_img_back'	=> $data['cover_img_back'],
+			'author_id'			=> $this->input->post('author_id'),
+			'series_id' 		=> $this->input->post('series_id')	
+			// 'series' => $this->input->post('series'),
+			// 'author' => $this->input->post('author'),
+			// 'category' => $this->input->post('category'),
+			// 'series_info' => $this->input->post('series_info'),
+			// 'about_author' => $this->input->post('about_author'),
 		);
 
-		return $this->db->insert('books', $data);
+		//TODO(?) -> add categories
+
+		// $this->db->insert('books', $data);
+
+		$categories = "";
+		
+		$i = 0;
+		foreach ($this->input->post('category_id') as $c) {
+			if ($i == 0)
+				$categories = "c" . $c;
+			else
+				$categories = $categories . " c" . $c;
+			$i++;
+		}
+
+		$data['category_ids'] = $categories;
+
+		if ($this->input->post('book_id') != "") {
+
+			$where = "book_id = " . $this->input->post('book_id');
+			$q = $this->db->update_string('books', $data, $where);
+
+			return $this->db->query($q);
+
+		}
+		else {
+
+			// sizeof(get_books())
+
+			return $this->db->insert('books', $data);
+
+			// $this->db->insert('books', $data);
+
+		}
 
 	}
 
-	public function edit_book() {
+	public function get_book() {
+		
+		$query = "SELECT * FROM books 
+		JOIN authors ON books.author_id = authors.author_id
+		JOIN series ON books.series_id = series.series_id
+		WHERE book_id=".$this->input->post('book_id');
+		$q = $this->db->query($query);
 
-		$data = array(
-			'book_name' => $this->input->post('book_name'),
-			'book_name_decor' => $this->input->post('book_name_decor'),
-			'series' => $this->input->post('series'),
-			'author' => $this->input->post('author'),
-			'category' => $this->input->post('category'),
-			'ISBN' => $this->input->post('ISBN'),
-			'publish' => $this->input->post('publish'),
-			'cover_inside' => $this->input->post('cover_inside'),
-			'total_pages' => $this->input->post('total_pages'),
-			'price' => $this->input->post('price'),
-			'discount' => $this->input->post('discount'),
-			'demo_link' => $this->input->post('demo_link'),
-			'book_info' => $this->input->post('book_info'),
-			'series_info' => $this->input->post('series_info'),
-			'about_author' => $this->input->post('about_author'),
-			'review' => $this->input->post('review'),
-			'cover_img_front' => $this->input->post('cover_img_front'),
-			'cover_img_back' => $this->input->post('cover_img_back')
-		);
+		$book = $q->result_array();
 
-		$where = "id = " . $this->input->post('id');
+		return $book[0];
+		// return $q->result_array();
 
-		$str = $this->db->update_string('books', $data, $where);
-
-		return $this->db->query($str);
 	}
 
-	public function get_book_file() {
-		$this->db->select('cover_img_front, cover_img_back, demo_link');
-		$query = $this->db->get_where('books', array('id' => $this->input->post('id')));
-		return $query->result_array();
+	public function get_book_by_id($book_id) {
+		
+		$query = "SELECT * FROM books 
+		JOIN authors ON books.author_id = authors.author_id
+		JOIN series ON books.series_id = series.series_id
+		WHERE book_id=".$book_id;
+		$q = $this->db->query($query);
+		$result = $q->result_array();
+
+		return $result[0];
+
+	}
+
+	public function get_books() {
+		
+		$query = "SELECT * FROM books";
+		$q = $this->db->query($query);
+
+		return $q->result_array();
+
 	}
 
 	public function delete_book() {
 
-		$query = "DELETE FROM books WHERE id=".$this->input->post('id');
-		return $this->db->query($query);
-			
+		return $this->db->delete('books', array('book_id' => $this->input->post('book_id')));
+
 	}
 
-	public function get_books_type($type) {
+	public function get_file() {
 
-		$query = "SELECT * FROM books WHERE type=".$type;
-		$q = $this->db->query($query);
-		return $q->result_array();
-		
+		$this->db->select('cover_img_front, cover_img_back, demo_link');
+		$query = $this->db->get_where('books', array('book_id' => $this->input->post('book_id')));
+
+		return $query->result_array();
+
 	}
 
-	public function find_book() {
+	public function get_books_size() {
 
-		$query = "SELECT * FROM books WHERE id=".$this->input->post('id');
-		$q = $this->db->query($query);
-		return $q->result_array();
+		$result = $this->get_books();
+
+		return sizeof($result);
 
 	}
 
 }
+
+?>

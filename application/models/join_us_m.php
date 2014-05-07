@@ -2,10 +2,10 @@
 
 class Join_Us_M extends CI_Model {
 	
-	public function add_join_us() {
+	public function add_join_us($data) {
 
 		$data = array(
-			'thumbnail_img' => $this->input->post('thumbnail_img'),
+			'thumbnail_img' => $data['thumbnail_img'],
 			'heading' => $this->input->post('heading'),
 			'detail' => $this->input->post('detail'),
 			'order' => $this->input->post('order')
@@ -15,10 +15,10 @@ class Join_Us_M extends CI_Model {
 
 	}
 
-	public function edit_join_us() {
+	public function edit_join_us($data) {
 
 		$data = array(
-			'thumbnail_img' => $this->input->post('thumbnail_img'),
+			'thumbnail_img' => $data['thumbnail_img'],
 			'heading' => $this->input->post('heading'),
 			'detail' => $this->input->post('detail'),
 			'order' => $this->input->post('order')

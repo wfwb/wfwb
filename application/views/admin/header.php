@@ -32,7 +32,20 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="admin_home_page">Home Page</a></li>
-					<li><a href="admin_books_page">Books Page</a></li>
+					<li><a href="admin_bookshelves_page">Bookshelves</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Books Management <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="admin_books_page">Books</a></li>
+							<li><a href="admin_categories_page">Categories</a></li>
+							<li><a href="admin_authors_page">Authors</a></li>
+							<li><a href="admin_series_page">Series</a></li>
+							<!-- <li class="divider"></li>
+							<li class="dropdown-header">Nav header</li>
+							<li><a href="#">Separated link</a></li>
+							<li><a href="#">One more separated link</a></li> -->
+						</ul>
+					</li>
 					<li><a href="admin_news_page">News Page</a></li>
 					<li><a href="admin_join_us_page">Join us Page</a></li>
 					<li><a href="admin_logout">Log out</a></li>

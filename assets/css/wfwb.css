@@ -6,6 +6,16 @@
 	ID css
 */
 
+
+	/* MIXITUP */
+	#Container .mix {
+		display: none;
+	}
+	/*  */
+	.mixitiup .mix {
+		display: none;
+	}
+
 	#navbar-custom {
 		width: 100%;
 		height: 150px;

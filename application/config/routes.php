@@ -41,6 +41,7 @@
 $route['default_controller'] = 'home_c';
 $route['404_override'] = '';
 
+$route['book/(:any)'] = 'books_c/book/$1';
 $route['books'] = 'books_c';
 $route['books2'] = 'books_c/books2';
 $route['join_us'] = 'join_us_c';

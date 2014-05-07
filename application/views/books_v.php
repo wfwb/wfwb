@@ -174,7 +174,7 @@
 
 							<?php for ($j = 0; $j < 4 && $no_book > 0; $j++) { ?>
 
-								<a href="#" style="color: #252120;">
+								<a href="<?php echo base_url(); ?>book/<?php echo $new_releases[$index]['book_id']; ?>" style="color: #252120;">
 									<div class="col-md-3" style="text-align: center; line-height: 10px;">
 										<img src="<?php echo $new_releases[$index]['cover_img_front']; ?>" width="200" style="padding: 5px 5px 5px 5px; border: 8px solid #FFEC99; margin: 0 0 10px 0;">
 										<h4 style="font-weight: bold;"><?php echo $new_releases[$index]['book_name']; ?></h4>
@@ -250,7 +250,7 @@
 					</div>
 				</a> -->
 			<!-- </div> -->
-			<div id="page-selection" style="text-align: center;"></div>
+			<!-- <div id="page-selection" style="text-align: center;"></div> -->
 			<script>
 				// init bootpag
 				$('#page-selection').bootpag({
@@ -350,7 +350,7 @@
 				<ul class="dropdown-menu" role="menu">
 					<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
 					<? foreach($categories as $category) { ?>
-						<li class="filter" data-filter=".<?php echo $category['category_id']; ?>"><a><?php echo $category['category_name']; ?></a></li>
+						<li class="filter" data-filter=".c<?php echo $category['category_id']; ?>"><a><?php echo $category['category_name']; ?></a></li>
 					<? } ?>
 					<!-- <li><a href="">โรแมนติกแฟนตาซี</a></li> -->
 					<!-- <li><a href="#">โรแมนติกคอเมดี้</a></li> -->
@@ -362,8 +362,9 @@
 					นักเขียน <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
+					<li class="filter" data-filter="all"><a>ทั้งหมด</a></li>
 					<? foreach($authors as $author) { ?>
-						<li class="filter" data-filter=".<?php echo $author['author_id']; ?>"><a><?php echo $author['author_name']; ?></a></li>
+						<li class="filter" data-filter=".a<?php echo $author['author_id']; ?>"><a><?php echo $author['author_name']; ?></a></li>
 					<? } ?>
 					<!-- <li><a href="#">ดวงตะวัน</a></li> -->
 					<!-- <li><a href="#">อรพิม</a></li> -->
@@ -375,8 +376,9 @@
 					เรียงตาม <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">ชื่อหนังสือ</a></li>
-					<li><a href="#">ราคา</a></li>
+					<li class="filter" data-sort="name:asc"><a href="#">ชื่อหนังสือ</a></li>
+					<!-- <li><a href="#">ราคา (น้อย - มาก)</a></li> -->
+					<!-- <li><a href="#">ราคา (มาก - น้อย)</a></li> -->
 				</ul>
 			</div>
 		</div>
@@ -430,7 +432,7 @@
 							<?php for ($j = 0; $j < sizeof($books); $j++) { ?>
 
 								<a href="#" style="color: #252120;">
-									<div class="col-md-3 mix <?php echo $books[$index]['category_ids']; ?>" style="text-align: center; line-height: 10px;">
+									<div class="col-md-3 mix <?php echo $books[$index]['category_ids']; ?> a<?php echo $books[$index]['author_id']; ?>" data-name="<?php echo $books[$index]['book_name'];?>" style="text-align: center; line-height: 10px; margin-bottom: 20px;">
 										<img src="<?php echo $books[$index]['cover_img_front']; ?>" width="200" style="padding: 5px 5px 5px 5px; border: 8px solid #FFEC99; margin: 0 0 10px 0;">
 										<h4 style="font-weight: bold;"><?php echo $books[$index]['book_name']; ?></h4>
 										<p style="font-size: 15px; color: #2e8ece;"><?php echo $books[$index]['author_name']; ?></p>

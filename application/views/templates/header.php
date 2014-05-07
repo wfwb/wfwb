@@ -7,17 +7,17 @@
 	<meta charset="utf-8">
 	<title>สำนักพิมพ์ คำต่อคำ</title>
 
-	<link media="screen" href="<?php base_url()?>assets/css/bootstrap.css" rel="stylesheet">
-	<!-- <link rel="stylesheet" type="text/css" href="<?php base_url()?>assets/css/bootstrap-glyphicons.css"> -->
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php base_url()?>assets/css/wfwb.css">
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php base_url()?>assets/css/wfwb-responsive.css">
+	<link media="screen" href="<?php echo base_url()?>assets/css/bootstrap.css" rel="stylesheet">
+	<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/bootstrap-glyphicons.css"> -->
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url()?>assets/css/wfwb.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url()?>assets/css/wfwb-responsive.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<script src="<?php base_url()?>assets/js/jquery-1.7.1.min.js" type="text/javascript"></script>
-	<script src="<?php base_url()?>assets/js/bootstrap.js" type="text/javascript"></script>
-	<script src="<?php base_url()?>assets/js/jquery.bootpag.js" type="text/javascript"></script>
-	<script src="<?php base_url()?>assets/js/jquery.dotdotdot.js" type="text/javascript"></script>
-	<script src="<?php base_url()?>assets/js/jquery.mixitup.js" type="text/javascript"></script>
+	<script src="<?php echo base_url()?>assets/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url()?>assets/js/bootstrap.js" type="text/javascript"></script>
+	<script src="<?php echo base_url()?>assets/js/jquery.bootpag.js" type="text/javascript"></script>
+	<script src="<?php echo base_url()?>assets/js/jquery.dotdotdot.js" type="text/javascript"></script>
+	<script src="<?php echo base_url()?>assets/js/jquery.mixitup.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
 		!function ($) {

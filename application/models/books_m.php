@@ -39,9 +39,9 @@ class Books_M extends CI_Model {
 		$i = 0;
 		foreach ($this->input->post('category_id') as $c) {
 			if ($i == 0)
-				$categories = $c;
+				$categories = "c" . $c;
 			else
-				$categories = $categories . " " . $c;
+				$categories = $categories . " c" . $c;
 			$i++;
 		}
 
@@ -69,10 +69,29 @@ class Books_M extends CI_Model {
 
 	public function get_book() {
 		
-		$query = "SELECT * FROM books WHERE book_id=".$this->input->post('book_id');
+		$query = "SELECT * FROM books 
+		JOIN authors ON books.author_id = authors.author_id
+		JOIN series ON books.series_id = series.series_id
+		WHERE book_id=".$this->input->post('book_id');
 		$q = $this->db->query($query);
 
-		return $q->result_array();
+		$book = $q->result_array();
+
+		return $book[0];
+		// return $q->result_array();
+
+	}
+
+	public function get_book_by_id($book_id) {
+		
+		$query = "SELECT * FROM books 
+		JOIN authors ON books.author_id = authors.author_id
+		JOIN series ON books.series_id = series.series_id
+		WHERE book_id=".$book_id;
+		$q = $this->db->query($query);
+		$result = $q->result_array();
+
+		return $result[0];
 
 	}
 

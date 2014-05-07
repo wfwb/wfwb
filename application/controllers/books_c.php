@@ -53,6 +53,19 @@ class Books_C extends CI_Controller {
 
 	}
 
+	public function book($book_id) {
+
+		$this->load->view('templates/header');
+
+		$data = array(
+			'book' => $this->books_m->get_book_by_id($book_id)
+		);
+
+		$this->load->view('book_v', $data);
+		$this->load->view('templates/footer');
+
+	}
+
 	public function books2() {
 		$this->load->view('templates/header');
 		$data = array(

@@ -23,7 +23,7 @@ class Db_Query extends CI_Model {
 	}
 
 	public function get_categories_db() {
-		$query = $this->db->query('SELECT * FROM categories');
+		$query = $this->db->query('SELECT * FROM categories ORDER BY categories.category_name');
 		return $query->result_array();
 	}
 
@@ -33,7 +33,7 @@ class Db_Query extends CI_Model {
 	}
 
 	public function get_authors_db() {
-		$query = $this->db->query('SELECT * FROM authors');
+		$query = $this->db->query('SELECT * FROM authors ORDER BY authors.author_name');
 		return $query->result_array();
 	}
 
